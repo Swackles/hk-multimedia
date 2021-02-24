@@ -12,3 +12,4 @@ namespace Assets.Scripts.Entity
         }
     }
 }
+
