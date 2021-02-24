@@ -10,6 +10,17 @@ namespace Assets.Scripts.Entity
         {
             Movement = new Vector2(Input.GetAxis("Horizontal"), 0);
         }
+
+        void OnTriggerEnter2D(Collider2D other) 
+        {
+
+            if (other.gameObject.CompareTag("Collectible"))
+                {
+                     other.gameObject.SetActive(false);
+                     collectible = collectible + 1;
+                     changeCounter();
+                }
+        }
     }
 }
 
