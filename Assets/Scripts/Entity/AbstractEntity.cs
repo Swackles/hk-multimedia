@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.Entity
 {
@@ -46,5 +47,7 @@ namespace Assets.Scripts.Entity
             else
                 _Animator.SetBool("Falling", false);
         }
+
+        
     }
 }
