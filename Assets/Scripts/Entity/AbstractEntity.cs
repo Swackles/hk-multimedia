@@ -10,8 +10,6 @@ namespace Assets.Scripts.Entity
     {
         [SerializeField]
         public float Speed = 1f;
-        public int collectible;
-        public Text counter;
 
         protected Vector2 Movement;
         protected Vector2 Velocity;
@@ -26,7 +24,6 @@ namespace Assets.Scripts.Entity
             rb = GetComponent<Rigidbody2D>();
             _Animator = GetComponent<Animator>();
             sr = GetComponent<SpriteRenderer>();
-            changeCounter();
         }
 
         public void FixedUpdate()
@@ -51,8 +48,6 @@ namespace Assets.Scripts.Entity
                 _Animator.SetBool("Falling", false);
         }
 
-        public void changeCounter() {
-            counter.text = "Collectibles: " + collectible;
-        }
+        
     }
 }
