@@ -42,10 +42,12 @@ namespace Assets.Scripts.Entity
             } else
                 _Animator.SetBool("Moving", false);
 
-            if (rb.velocity.y < 0)
+            if (rb.velocity.y < 0) {
                 _Animator.SetBool("Falling", true);
-            else
+                _Animator.SetBool("Jumping", false);
+            } else {
                 _Animator.SetBool("Falling", false);
+            }
         }
 
         
