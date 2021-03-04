@@ -46,7 +46,6 @@ namespace Assets.Scripts.Entity
                 {
                     m_Grounded = true;
                     if (!wasGrounded)
-                        Debug.Log("Hello!");
                         OnLandEvent.Invoke();
                 }
             }
@@ -54,7 +53,6 @@ namespace Assets.Scripts.Entity
 
         public void OnLanding () {
             _Animator.SetBool("Jumping", false);
-            Debug.Log("Hello!");
         }
 
         public void Update()
