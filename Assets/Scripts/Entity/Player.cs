@@ -5,7 +5,6 @@ namespace Assets.Scripts.Entity
 {
     class Player : AbstractEntity
     {
-
         public int collectible;
         public Text counter;
         public float JumpVelocity = 100f;
@@ -19,8 +18,11 @@ namespace Assets.Scripts.Entity
         new public void FixedUpdate()
         {
             Movement = new Vector2(Input.GetAxis("Horizontal"), 0);
-
-            if (Input.GetButtonDown("Jump") && rb.velocity.y == 0)
+            /**
+             * ##### Why GetButton got replaced with GetKey #####
+             * For some reason GetButton is unreliable and won't always register the key pressed
+             */
+            if (Input.GetKey(KeyCode.Space) && rb.velocity.y == 0)
                 rb.velocity = Vector2.up * JumpVelocity;
 
             base.FixedUpdate();
