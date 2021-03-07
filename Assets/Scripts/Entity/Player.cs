@@ -16,12 +16,14 @@ namespace Assets.Scripts.Entity
 
         }
 
-        public void Update()
+        new public void FixedUpdate()
         {
             Movement = new Vector2(Input.GetAxis("Horizontal"), 0);
 
             if (Input.GetButtonDown("Jump") && rb.velocity.y == 0)
                 rb.velocity = Vector2.up * JumpVelocity;
+
+            base.FixedUpdate();
         }
 
         void OnTriggerEnter2D(Collider2D other)

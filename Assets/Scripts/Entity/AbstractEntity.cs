@@ -43,9 +43,9 @@ namespace Assets.Scripts.Entity
                 _Animator.SetBool("Falling", true);
 
             
-            if (rb.velocity.x > 0)
+            if (rb.velocity.x > 0.1f)
                 sr.flipX = false;
-            else
+            else if (rb.velocity.x < -0.1f)
                 sr.flipX = true;
         }
     }
