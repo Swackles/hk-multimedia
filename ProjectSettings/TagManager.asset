@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Forground
   - Collectible
+  - Enemy
   layers:
   - Default
   - TransparentFX
