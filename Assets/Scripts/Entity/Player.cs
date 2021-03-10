@@ -17,7 +17,7 @@ namespace Assets.Scripts.Entity
 
         new public void FixedUpdate()
         {
-            Movement = new Vector2(Input.GetAxis("Horizontal"), 0);
+            Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
             /**
              * ##### Why GetButton got replaced with GetKey #####
              * For some reason GetButton is unreliable and won't always register the key pressed
