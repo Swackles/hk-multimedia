@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -31,23 +32,21 @@ namespace Assets.Scripts.Entity
             Movement = Movement * Speed;
             rb.velocity += Movement;
 
-            if (rb.velocity.x != 0)
-            {
-                _Animator.SetBool("Moving", true);
+            _Animator.SetFloat("Speed", Math.Abs(rb.velocity.x));
 
-                if (rb.velocity.x > 0)
-                    sr.flipX = false;
-                else
-                    sr.flipX = true;
-            } else
-                _Animator.SetBool("Moving", false);
+            _Animator.SetBool("Falling", false);
+            _Animator.SetBool("Jumping", false);
 
-            if (rb.velocity.y < 0)
+            if (rb.velocity.y > 0.2f)
+                _Animator.SetBool("Jumping", true);
+            else if (rb.velocity.y < -0.2f)
                 _Animator.SetBool("Falling", true);
-            else
-                _Animator.SetBool("Falling", false);
-        }
 
-        
+            
+            if (rb.velocity.x > 0.1f)
+                sr.flipX = false;
+            else if (rb.velocity.x < -0.1f)
+                sr.flipX = true;
+        }
     }
 }
