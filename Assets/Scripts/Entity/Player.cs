@@ -10,9 +10,9 @@ namespace Assets.Scripts.Entity
 
         public int collectible;
         public Text counter;
-        public float enemyBumpPowerY = 10f;
-        public float enemyBumpPowerX = 10f;
         public int health = 3;
+        public int maxHealth = 3;
+        public int enemyBumpPower = 10;
 
         new public void Start() {
             base.Start();
@@ -43,11 +43,12 @@ namespace Assets.Scripts.Entity
             {
             if (collisionEnemy.gameObject.tag.Equals ("Enemy"))
                 {
+                    Enemy enemyBumpPower = collisionEnemy.gameObject.GetComponent<Enemy>();
                     if (sr.flipX) 
                         {
-                            rb.velocity = Vector2.right * enemyBumpPowerX;
+                            rb.velocity = Vector2.right * enemyBumpPower.enemyBumpPowerX;
                         } else {
-                            rb.velocity = Vector2.left * enemyBumpPowerX;
+                            rb.velocity = Vector2.left * enemyBumpPower.enemyBumpPowerX;
                         }
                     if (health > 1) 
                         {
@@ -55,7 +56,8 @@ namespace Assets.Scripts.Entity
                     } else
                         {
                             rb.transform.position = new Vector2(Input.GetAxis("Horizontal"), 0);
-                            health = 3;
+                            rb.velocity = Vector2.zero;
+                            health = maxHealth;
                         }
                 }
             }
