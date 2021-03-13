@@ -12,7 +12,6 @@ namespace Assets.Scripts.Entity
         public Text counter;
         public int health = 3;
         public int maxHealth = 3;
-        public int enemyBumpPower = 10;
 
         new public void Start() {
             base.Start();
