@@ -1,18 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using Assets.Scripts.Collectible;
+using Assets.Scripts.EventSystems;
 
 namespace Assets.Scripts.Entity
 {
     class Player : AbstractEntity
     {
-        public int collectible;
-        public Text counter;
         public float JumpVelocity = 100f;
+
         new public void Start()
         {
             base.Start();
-            changeCounter();
-
         }
 
         new public void FixedUpdate()
@@ -30,19 +28,11 @@ namespace Assets.Scripts.Entity
 
         void OnTriggerEnter2D(Collider2D other)
         {
+            AbstractCollectible Collectible;
 
-            if (other.gameObject.CompareTag("Collectible"))
-            {
-                other.gameObject.SetActive(false);
-                collectible = collectible + 1;
-                changeCounter();
-            }
+            if (other.TryGetComponent(out Collectible))
+                Collectible.Handle();
         }
-
-        public void changeCounter() {
-            counter.text = "Collectibles: " + collectible;
-        }
-
     }
 }
 
