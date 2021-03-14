@@ -8,6 +8,7 @@ namespace Assets.Scripts.Entity
         public int collectible;
         public Text counter;
         public float JumpVelocity = 100f;
+
         new public void Start()
         {
             base.Start();
