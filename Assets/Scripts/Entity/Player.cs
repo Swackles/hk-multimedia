@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Collectible;
-using Assets.Scripts.EventSystems;
 
 namespace Assets.Scripts.Entity
 {
