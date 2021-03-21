@@ -6,10 +6,12 @@ namespace Assets.Scripts.Entity
     class Player : AbstractEntity
     {
         public float JumpVelocity = 100f;
+        public static Player Current;
 
         new public void Start()
         {
             base.Start();
+            Current = this;
         }
 
         new public void FixedUpdate()
