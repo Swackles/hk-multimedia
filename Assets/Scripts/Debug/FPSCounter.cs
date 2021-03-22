@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Debug
+namespace Assets.Scripts.DebugOverlay
 {
     [RequireComponent(typeof(Text))]
     class FPSCounter : MonoBehaviour

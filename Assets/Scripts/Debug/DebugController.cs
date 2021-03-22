@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-namespace Assets.Scripts.Debug
+namespace Assets.Scripts.DebugOverlay
 {
     [DisallowMultipleComponent]
     class DebugController : MonoBehaviour
