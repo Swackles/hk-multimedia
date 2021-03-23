@@ -59,6 +59,7 @@ namespace Assets.Scripts.Entity
                 // if virus has reached target, start attack cooldown
                 if ((Vector2)transform.position == (Vector2)Target) 
                 {
+                    Debug.Log(CooldownTime / SpeedModifier);
                     Timer timeoutTimer = new Timer(CooldownTime / SpeedModifier);
                     timeoutTimer.Elapsed += OnCooldownEnd;
                     timeoutTimer.AutoReset = false;
@@ -149,7 +150,7 @@ namespace Assets.Scripts.Entity
         #region EventHandlers
         private void OnCooldownEnd(object source, ElapsedEventArgs e)
         {
-            DebugMode = false;
+            Cooldown = false;
         }
 
         #region Medicine
