@@ -8,10 +8,12 @@ namespace Assets.Scripts.Entity
     class Player : AbstractEntity
     {
 
-        public int collectible;
+        private int collectible;
         public Text counter;
-        public int health = 3;
+        private int health = 3;
         public int maxHealth = 3;
+        static public bool isHurt = false;
+        private Vector2 spawnpoint = new Vector2(0,0);
 
         new public void Start() {
             base.Start();
@@ -21,7 +23,10 @@ namespace Assets.Scripts.Entity
         public void Update()
         {
             Movement = new Vector2(Input.GetAxis("Horizontal"), 0);
+            hurt();
+            changeCounter();
         }
+
 
         void OnTriggerEnter2D(Collider2D other) 
         {
@@ -32,34 +37,23 @@ namespace Assets.Scripts.Entity
                      collectible = collectible + 1;
                      changeCounter();
                 }
+            
         }
 
         public void changeCounter() {
             counter.text = "Collectibles: " + collectible;
+            //canBeHurt = true;
         }
 
-        void OnCollisionEnter2D(Collision2D collisionEnemy)
-            {
-            if (collisionEnemy.gameObject.tag.Equals ("Enemy"))
-                {
-                    Enemy enemyBumpPower = collisionEnemy.gameObject.GetComponent<Enemy>();
-                    if (sr.flipX) 
-                        {
-                            rb.velocity = Vector2.right * enemyBumpPower.enemyBumpPowerX;
-                        } else {
-                            rb.velocity = Vector2.left * enemyBumpPower.enemyBumpPowerX;
-                        }
-                    if (health > 1) 
-                        {
-                            health = health - 1;
-                    } else
-                        {
-                            rb.transform.position = new Vector2(Input.GetAxis("Horizontal"), 0);
-                            rb.velocity = Vector2.zero;
-                            health = maxHealth;
-                        }
+        void hurt() {
+            if (isHurt) {
+                isHurt = false;
+                health = health - 1;
+                if (health < 1) {
+                    transform.position = spawnpoint;
+                    health = maxHealth;
                 }
             }
+        }
     }
 }
-

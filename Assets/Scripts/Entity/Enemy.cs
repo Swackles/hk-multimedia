@@ -2,13 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 namespace Assets.Scripts.Entity
 {
     class Enemy : MonoBehaviour
     {
-        public float enemyBumpPowerY = 10f;
-        public float enemyBumpPowerX = 10f;
-
+        private Vector2 knockback;
+        private float hitPower = 100f;
+        void OnCollisionEnter2D(Collision2D collidedWith) {
+            if (collidedWith.gameObject.CompareTag("Player")) {
+                knockback = collidedWith.gameObject.transform.position - transform.position;
+                GameObject playerObj = GameObject.Find("Player");
+                playerObj.GetComponent<Rigidbody2D>().AddForce(knockback * hitPower);
+                Player.isHurt = true;
+            }
+        }
     }
 }
