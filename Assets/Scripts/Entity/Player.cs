@@ -12,7 +12,6 @@ namespace Assets.Scripts.Entity
         public Text counter;
         private int health = 3;
         public int maxHealth = 3;
-        static public bool isHurt = false;
         private Vector2 spawnpoint = new Vector2(0,0);
 
         new public void Start() {
@@ -23,7 +22,6 @@ namespace Assets.Scripts.Entity
         public void Update()
         {
             Movement = new Vector2(Input.GetAxis("Horizontal"), 0);
-            hurt();
             changeCounter();
         }
 
@@ -41,19 +39,18 @@ namespace Assets.Scripts.Entity
         }
 
         public void changeCounter() {
-            counter.text = "Collectibles: " + collectible;
-            //canBeHurt = true;
+            counter.text = "Collectibles: " + health;
         }
 
-        void hurt() {
-            if (isHurt) {
-                isHurt = false;
-                health = health - 1;
-                if (health < 1) {
-                    transform.position = spawnpoint;
-                    health = maxHealth;
-                }
+        public void hurt() {
+            health = health - 1;
+            if (health < 1) {
+                transform.position = spawnpoint;
+                health = maxHealth;
+            } else {
+                GameObject playerObj = GameObject.Find("Player");
+                playerObj.GetComponent<Rigidbody2D>().AddForce(Enemy.knockback * Enemy.hitPower);
             }
-        }
+        }  
     }
 }
