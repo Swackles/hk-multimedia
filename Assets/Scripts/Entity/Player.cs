@@ -8,11 +8,11 @@ namespace Assets.Scripts.Entity
     class Player : AbstractEntity
     {
 
-        private int collectible;
-        public Text counter;
-        private int health = 3;
-        public int maxHealth = 3;
-        private Vector2 spawnpoint = new Vector2(0,0);
+        private int Collectible;
+        public Text Counter;
+        private int Health = 3;
+        public int MaxHealth = 3;
+        private Vector2 SpawnPoint = new Vector2(0,0);
 
         new public void Start() {
             base.Start();
@@ -32,25 +32,23 @@ namespace Assets.Scripts.Entity
             if (other.gameObject.CompareTag("Collectible"))
                 {
                      other.gameObject.SetActive(false);
-                     collectible = collectible + 1;
+                     Collectible++;
                      changeCounter();
                 }
             
         }
 
-        public void changeCounter() {
-            counter.text = "Collectibles: " + health;
+        void changeCounter() {
+            Counter.text = "Collectibles: " + Collectible;
         }
 
-        public void hurt() {
-            health = health - 1;
-            if (health < 1) {
-                transform.position = spawnpoint;
-                health = maxHealth;
-            } else {
-                GameObject playerObj = GameObject.Find("Player");
-                playerObj.GetComponent<Rigidbody2D>().AddForce(Enemy.knockback * Enemy.hitPower);
-            }
+        public void hurt(Vector2 KnockBack) {
+            Health--;
+            if (Health < 1) {
+                transform.position = SpawnPoint;
+                Health = MaxHealth;
+            } else 
+                rb.AddForce(KnockBack);
         }  
     }
 }
