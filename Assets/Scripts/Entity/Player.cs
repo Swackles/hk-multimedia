@@ -7,6 +7,9 @@ namespace Assets.Scripts.Entity
     {
         public float JumpVelocity = 100f;
         public static Player Current;
+        private int Health = 3;
+        public int MaxHealth = 3;
+        private Vector2 SpawnPoint = new Vector2(0,0);
 
         new public void Start()
         {
@@ -34,6 +37,16 @@ namespace Assets.Scripts.Entity
             if (other.TryGetComponent(out Collectible))
                 Collectible.Handle();
         }
+
+        public void hurt(Vector2 KnockBack) 
+        {
+            Health--;
+            if (Health < 1) {
+                transform.position = SpawnPoint;
+                Health = MaxHealth;
+            } else 
+                rb.AddForce(KnockBack);
+        }  
     }
 }
 
