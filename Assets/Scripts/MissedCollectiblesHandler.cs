@@ -3,12 +3,11 @@ using Assets.Scripts.Collectible;
 
 namespace Assets.Scripts
 {
-    class MissedCollectiblesHandler : MonoBehaviour
+    public class MissedCollectiblesHandler : MonoBehaviour
     {
 
-        void OnTriggerEnter2D(Collider2D other)
+        public void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log(true);
             AbstractCollectible Collectible;
 
             if (other.TryGetComponent(out Collectible))

@@ -4,23 +4,23 @@ using UnityEngine.UI;
 namespace Assets.Scripts.DebugOverlay
 {
     [DisallowMultipleComponent]
-    class DebugController : MonoBehaviour
+    public class DebugController : MonoBehaviour
     {
-        [SerializeField] private bool ActivateOnStartup = true;
-        [SerializeField] private KeyCode Key = KeyCode.F2;
-        private GameObject DebugGrid;
+        [SerializeField] private bool _activateOnStartup = true;
+        [SerializeField] private KeyCode _key = KeyCode.F2;
+        private GameObject _debugGrid;
 
         public void Start()
         {
-            DebugGrid = GetComponentInChildren<GridLayoutGroup>().gameObject;
+            _debugGrid = GetComponentInChildren<GridLayoutGroup>().gameObject;
 
-            DebugGrid.SetActive(ActivateOnStartup);
+            _debugGrid.SetActive(_activateOnStartup);
         }
 
         public void Update()
         {
-            if (Input.GetKeyDown(Key))
-                DebugGrid.SetActive(!DebugGrid.activeSelf);
+            if (Input.GetKeyDown(_key))
+                _debugGrid.SetActive(!_debugGrid.activeSelf);
         }
     }
 }

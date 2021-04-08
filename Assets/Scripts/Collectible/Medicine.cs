@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Collectible
 {
-    class Medicine : AbstractCollectible
+    public class Medicine : AbstractCollectible
     {
         public override void OnCollected()
         {
