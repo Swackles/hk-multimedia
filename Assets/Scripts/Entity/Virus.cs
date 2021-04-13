@@ -7,66 +7,66 @@ namespace Assets.Scripts.Entity
 {
     [CommandPrefix("Entity.Virus.")]
     [RequireComponent(typeof(LineRenderer))]
-    class Virus : AbstractEntity, IMedicineCollectedHandler, IMedicineMissedHandler
+    public class Virus : AbstractEntity, IMedicineCollectedHandler, IMedicineMissedHandler
     {
-        private float SpeedModifier = 1f;
-        [SerializeField] private float Range = 10f;
+        private float _speedModifier = 1f;
+        [SerializeField] private float _range = 10f;
 
-        private byte  MedicineMissed = 1;
-        private byte MedicineCollected = 1;
+        private byte _medicineMissed = 1;
+        private byte _medicineCollected = 1;
 
-        private byte VertexCount = 50;
-        private LineRenderer LR;
+        private byte _vertexCount = 50;
+        private LineRenderer _lr;
 
-        private bool DebugMode = false;
+        private bool _debugMode = false;
 
-        private Vector2? Target = null;
+        private Vector2? _target = null;
         [Tooltip("By how many pixels does the virus go past the target")]
-        [SerializeField] private float Overextend = 3f;
+        [SerializeField] private float _overextend = 3f;
 
         [Tooltip("Cooldown period in ms after an attack that the virus can't attack again")]
-        [SerializeField] private float CooldownTime = 2000f;
+        [SerializeField] private float _cooldownTime = 2000f;
         
         
         [ReadOnly] public bool Cooldown = false;
 
-        private void Awake()
+        public void Awake()
         {
-            LR = GetComponent<LineRenderer>();
+            _lr = GetComponent<LineRenderer>();
         }
 
-        private void Update()
+        public void Update()
         {
-            float step = Speed * SpeedModifier * Time.deltaTime;
+            float step = Speed * _speedModifier * Time.deltaTime;
 
-            if (DebugMode)
+            if (_debugMode)
             {
-                if (Target != null)
-                    DrawPathToTarget((Vector2)Target, Color.red);
+                if (_target != null)
+                    DrawPathToTarget((Vector2)_target, Color.red);
                 else if (!Cooldown)
                     DrawRangeBox();
             }
 
-            bool isPlayerInRange = Range >= Vector2.Distance(transform.position, Player.Current.transform.position);
+            bool isPlayerInRange = _range >= Vector2.Distance(transform.position, Player.Current.transform.position);
 
             // Handles movement
-            if (!Cooldown && isPlayerInRange && Target == null) // If virus can atatck the player
+            if (!Cooldown && isPlayerInRange && _target == null) // If virus can atatck the player
                 StartAttack();
-            else if (Target != null) // If virus is in the middle of the attack
+            else if (_target != null) // If virus is in the middle of the attack
             {
-                transform.position = Vector2.MoveTowards(transform.position, (Vector2)Target, step);
+                transform.position = Vector2.MoveTowards(transform.position, (Vector2)_target, step);
 
                 // if virus has reached target, start attack cooldown
-                if ((Vector2)transform.position == (Vector2)Target) 
+                if ((Vector2)transform.position == (Vector2)_target) 
                 {
-                    Debug.Log(CooldownTime / SpeedModifier);
-                    Timer timeoutTimer = new Timer(CooldownTime / SpeedModifier);
+                    Debug.Log(_cooldownTime / _speedModifier);
+                    Timer timeoutTimer = new Timer(_cooldownTime / _speedModifier);
                     timeoutTimer.Elapsed += OnCooldownEnd;
                     timeoutTimer.AutoReset = false;
                     timeoutTimer.Start();
 
                     Cooldown = true;
-                    Target = null;
+                    _target = null;
                 }
             }
         }
@@ -78,24 +78,24 @@ namespace Assets.Scripts.Entity
         [Command("Debug", MonoTargetType.All)]
         private void ToggleDebug()
         {
-            DebugMode = !DebugMode;
+            _debugMode = !_debugMode;
 
-            if (!DebugMode)
-                LR.positionCount = 0;
+            if (!_debugMode)
+                _lr.positionCount = 0;
         }
 
         private void DrawPathToTarget(Vector2 target, Color color)
         {
-            LR.positionCount = 0;
+            _lr.positionCount = 0;
 
-            LR.startColor = color;
-            LR.endColor = color;
-            LR.widthMultiplier = 0.1f;
+            _lr.startColor = color;
+            _lr.endColor = color;
+            _lr.widthMultiplier = 0.1f;
 
-            LR.positionCount = 2;
+            _lr.positionCount = 2;
 
-            LR.SetPosition(0, transform.position);
-            LR.SetPosition(1, target);
+            _lr.SetPosition(0, transform.position);
+            _lr.SetPosition(1, target);
 
         }
 
@@ -104,22 +104,22 @@ namespace Assets.Scripts.Entity
         /// </summary>
         private void DrawRangeBox()
         {
-            LR.positionCount = 0;
+            _lr.positionCount = 0;
 
-            LR.startColor = Color.green;
-            LR.endColor = Color.green;
-            LR.widthMultiplier = 0.1f;
+            _lr.startColor = Color.green;
+            _lr.endColor = Color.green;
+            _lr.widthMultiplier = 0.1f;
             float theta = 0f;
 
-            LR.positionCount = VertexCount + 1;
-            for (int i = 0; i < VertexCount; i++)
+            _lr.positionCount = _vertexCount + 1;
+            for (int i = 0; i < _vertexCount; i++)
             {
-                Vector2 pos = new Vector2(Range * Mathf.Cos(theta), Range * Mathf.Sin(theta));
-                LR.SetPosition(i, pos + (Vector2)transform.position);
-                theta += (2f * Mathf.PI) / VertexCount;
+                Vector2 pos = new Vector2(_range * Mathf.Cos(theta), _range * Mathf.Sin(theta));
+                _lr.SetPosition(i, pos + (Vector2)transform.position);
+                theta += (2f * Mathf.PI) / _vertexCount;
             }
 
-            LR.SetPosition(LR.positionCount - 1, LR.GetPosition(0));
+            _lr.SetPosition(_lr.positionCount - 1, _lr.GetPosition(0));
         }
         #endregion
 
@@ -138,13 +138,13 @@ namespace Assets.Scripts.Entity
             // Calculating the angle between X axis and hypotenuse (distance)
             float theda = Mathf.Acos(difference.x / distance);  // Gives the result in radians
 
-            distance += Overextend;
+            distance += _overextend;
 
             float x = Mathf.Cos(theda) * distance;
             float y = Mathf.Sin(theda) * x;
 
 
-            Target = new Vector2(x, y) + virus;
+            _target = new Vector2(x, y) + virus;
         }
 
         #region EventHandlers
@@ -156,14 +156,14 @@ namespace Assets.Scripts.Entity
         #region Medicine
         public void OnMedicineCollected()
         {
-            MedicineMissed++;
-            SpeedModifier = MedicineMissed / MedicineCollected;
+            _medicineCollected++;
+            _speedModifier = _medicineMissed / _medicineCollected;
         }
 
         public void OnMedicineMissed()
         {
-            MedicineCollected++;
-            SpeedModifier = MedicineMissed / MedicineCollected;
+            _medicineMissed++;
+            _speedModifier = _medicineMissed / _medicineCollected;
         }
         #endregion
 

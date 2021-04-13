@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Collectible;
+using System;
 
 namespace Assets.Scripts.Entity
 {
-    class Player : AbstractEntity
+    public class Player : AbstractEntity
     {
         public float JumpVelocity = 100f;
         public static Player Current;
-        private int Health = 3;
-        public int MaxHealth = 3;
-        private Vector2 SpawnPoint = new Vector2(0,0);
+
+        [NonSerialized] public int Health = 3;
+
+        [SerializeField] public int _maxHealth = 3;
+        private Vector2 _spawnPoint = new Vector2(0,0);
 
         new public void Start()
         {
@@ -24,13 +27,13 @@ namespace Assets.Scripts.Entity
              * ##### Why GetButton got replaced with GetKey #####
              * For some reason GetButton is unreliable and won't always register the key pressed
              */
-            if (Input.GetKey(KeyCode.Space) && rb.velocity.y == 0)
-                rb.velocity = Vector2.up * JumpVelocity;
+            if (Input.GetKey(KeyCode.Space) && RB.velocity.y == 0)
+                RB.velocity = Vector2.up * JumpVelocity;
 
             base.FixedUpdate();
         }
 
-        void OnTriggerEnter2D(Collider2D other)
+        public void OnTriggerEnter2D(Collider2D other)
         {
             AbstractCollectible Collectible;
 
@@ -38,14 +41,14 @@ namespace Assets.Scripts.Entity
                 Collectible.Handle();
         }
 
-        public void hurt(Vector2 KnockBack) 
+        public void Hurt(Vector2 KnockBack) 
         {
             Health--;
             if (Health < 1) {
-                transform.position = SpawnPoint;
-                Health = MaxHealth;
+                transform.position = _spawnPoint;
+                Health = _maxHealth;
             } else 
-                rb.AddForce(KnockBack);
+                RB.AddForce(KnockBack);
         }  
     }
 }

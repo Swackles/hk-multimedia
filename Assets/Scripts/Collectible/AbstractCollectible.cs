@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Collectible
 {
-    abstract class AbstractCollectible : MonoBehaviour
+    public abstract class AbstractCollectible : MonoBehaviour
     {
         public abstract void OnCollected();
 

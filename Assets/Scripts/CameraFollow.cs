@@ -2,17 +2,18 @@
 
 namespace Assets.Scripts
 {
-    class CameraFollow : MonoBehaviour
+    public class CameraFollow : MonoBehaviour
     {
-        [SerializeField] private GameObject Following;
+        [SerializeField] private GameObject _following;
 
         public void Start()
         {
-            gameObject.transform.position = Following.transform.position;
+            gameObject.transform.position = _following.transform.position;
         }
+
         public void Update()
         {
-            float followingX = Following.transform.position.x;
+            float followingX = _following.transform.position.x;
 
             // Check if following x is larger than camera x;
             if (followingX > transform.position.x)

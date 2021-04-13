@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.EventSystems
 {
-    class EventSystem : MonoBehaviour
+    public class EventSystem : MonoBehaviour
     {
         public static EventSystem Current;
 

@@ -4,19 +4,19 @@ using UnityEngine.UI;
 namespace Assets.Scripts.DebugOverlay
 {
     [RequireComponent(typeof(Text))]
-    class FPSCounter : MonoBehaviour
+    public class FPSCounter : MonoBehaviour
     {
-        private Text _Text;
+        private Text _text;
         public void Awake()
         {
-            _Text = GetComponent<Text>();
+            _text = GetComponent<Text>();
         }
         public void Update()
         {
             
             float frames = Time.frameCount / Time.time;
 
-            _Text.text = "FPS: " + ((int)frames).ToString();
+            _text.text = "FPS: " + ((int)frames).ToString();
         }
     }
 }
