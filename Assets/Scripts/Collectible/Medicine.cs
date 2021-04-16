@@ -9,6 +9,10 @@ namespace Assets.Scripts.Collectible
             EventSystem.Current.MedicineCollected();
         }
 
+        public override void Collect()
+        {
+        }
+
         public override void OnMissed()
         {
             EventSystem.Current.MedicineMissed();

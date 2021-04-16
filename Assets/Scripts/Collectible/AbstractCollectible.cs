@@ -6,6 +6,8 @@ namespace Assets.Scripts.Collectible
     {
         public abstract void OnCollected();
 
+        public abstract void Collect();
+
         public abstract void OnMissed();
 
         public void Handle(bool collected = true)
