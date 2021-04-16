@@ -7,15 +7,14 @@ namespace Assets.Scripts.Entity
 {
     [CommandPrefix("Entity.Virus.")]
     [RequireComponent(typeof(LineRenderer))]
-    public class Virus : AbstractEntity, IMedicineCollectedHandler, IMedicineMissedHandler
+    public class Virus : AbstractEntity, IMedicineCollectedHandler
     {
         private float _speedModifier = 1f;
+        private Timer _speedModifierTimer;
+
         [SerializeField] private float _range = 10f;
 
-        private byte _medicineMissed = 1;
-        private byte _medicineCollected = 1;
-
-        private byte _vertexCount = 50;
+        private readonly byte _vertexCount = 50;
         private LineRenderer _lr;
 
         private bool _debugMode = false;
@@ -59,7 +58,6 @@ namespace Assets.Scripts.Entity
                 // if virus has reached target, start attack cooldown
                 if ((Vector2)transform.position == (Vector2)_target) 
                 {
-                    Debug.Log(_cooldownTime / _speedModifier);
                     Timer timeoutTimer = new Timer(_cooldownTime / _speedModifier);
                     timeoutTimer.Elapsed += OnCooldownEnd;
                     timeoutTimer.AutoReset = false;
@@ -153,20 +151,24 @@ namespace Assets.Scripts.Entity
             Cooldown = false;
         }
 
-        #region Medicine
-        public void OnMedicineCollected()
+        private void OnSpeedModifierTimerEnd(object source, ElapsedEventArgs e)
         {
-            _medicineCollected++;
-            _speedModifier = _medicineMissed / _medicineCollected;
+            _speedModifier = 0.5f;
         }
 
-        public void OnMedicineMissed()
+        public void OnMedicineCollected(int timer)
         {
-            _medicineMissed++;
-            _speedModifier = _medicineMissed / _medicineCollected;
-        }
-        #endregion
+            _speedModifierTimer?.Stop();
 
+            _speedModifierTimer = new Timer(timer) {
+                AutoReset = false                
+            };
+
+            _speedModifierTimer.Elapsed += OnSpeedModifierTimerEnd;
+            _speedModifierTimer.Start();
+
+            _speedModifier = 1;
+        }
         #endregion
     }
 }
