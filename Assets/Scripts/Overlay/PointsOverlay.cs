@@ -6,7 +6,7 @@ namespace Assets.Scripts.Overlay
 {
 
     [RequireComponent(typeof(Text))]
-    class PointsOverlay : MonoBehaviour
+    class PointsOverlay : MonoBehaviour, IPointsCollected
     {
         private int _points = 0;
         [Tooltip("The string that goes before the points")]
@@ -18,6 +18,12 @@ namespace Assets.Scripts.Overlay
         public void Awake()
         {
             _text = GetComponent<Text>();
+            UpdatePoints();
+        }
+
+        public void OnPointsCollected(int points)
+        {
+            _points += points;
             UpdatePoints();
         }
 
