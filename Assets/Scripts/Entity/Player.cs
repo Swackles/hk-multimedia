@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Assets.Scripts.Collectible;
+using Assets.Scripts.EventSystems;
 using System;
 
 namespace Assets.Scripts.Entity
@@ -41,7 +42,12 @@ namespace Assets.Scripts.Entity
 
         public void Hurt(Vector2 KnockBack) 
         {
+            int oldHealth = Health;
+
             Health--;
+
+            EventSystem.Current.PlayerHurt(oldHealth, Health);
+
             if (Health < 1) {
                 transform.position = _spawnPoint;
                 Health = _maxHealth;
