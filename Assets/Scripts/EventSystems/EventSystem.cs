@@ -16,7 +16,7 @@ namespace Assets.Scripts.EventSystems
             SubscribeDeath();
         }
 
-        #region Deadth
+        #region Death
         private void SubscribeDeath()
         {
             foreach (IPlayerDeathHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IPlayerDeathHandler>())
