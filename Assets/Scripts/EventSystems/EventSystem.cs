@@ -11,6 +11,7 @@ namespace Assets.Scripts.EventSystems
         private void Awake()
         {
             Current = this;
+            SubscribePlayerHurt();
             SubscribeMedicine();
             SubscribePointsCollected();
         }

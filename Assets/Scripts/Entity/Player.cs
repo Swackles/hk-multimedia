@@ -2,9 +2,12 @@
 using Assets.Scripts.Collectible;
 using Assets.Scripts.EventSystems;
 using System;
+using QFSW.QC;
 
 namespace Assets.Scripts.Entity
 {
+
+    [CommandPrefix("Entity.Player.")]
     public class Player : AbstractEntity
     {
         public float JumpVelocity = 100f;
@@ -40,6 +43,7 @@ namespace Assets.Scripts.Entity
                 Collectible.Collect();
         }
 
+        [Command("Hurt")]
         public void Hurt(Vector2 KnockBack) 
         {
             int oldHealth = Health;
