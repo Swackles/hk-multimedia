@@ -14,7 +14,7 @@ namespace Assets.Scripts.Entity
 
         [NonSerialized] public int Health = 3;
 
-        [SerializeField] public int _maxHealth = 3;
+        [SerializeField] private int _maxHealth = 3;
         private Vector2 _spawnPoint = new Vector2(0,0);
 
         new public void Start()
@@ -38,10 +38,8 @@ namespace Assets.Scripts.Entity
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            AbstractCollectible Collectible;
-
-            if (other.TryGetComponent(out Collectible))
-                Collectible.Handle();
+            if (other.TryGetComponent(out AbstractCollectible Collectible))
+                Collectible.Collect();
         }
 
         public void Hurt(Vector2 KnockBack) 
