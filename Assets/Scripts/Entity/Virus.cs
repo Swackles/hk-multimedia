@@ -7,7 +7,7 @@ namespace Assets.Scripts.Entity
 {
     [CommandPrefix("Entity.Virus.")]
     [RequireComponent(typeof(LineRenderer))]
-    public class Virus : AbstractEntity, IMedicineCollectedHandler
+    public class Virus : AbstractEntity, IVaccineCollectedHandler
     {
         private float _speedModifier = 1f;
         private Timer _speedModifierTimer;
@@ -156,7 +156,7 @@ namespace Assets.Scripts.Entity
             _speedModifier = 0.5f;
         }
 
-        public void OnMedicineCollected(int timer)
+        public void OnVaccineCollected(int timer)
         {
             _speedModifierTimer?.Stop();
 

@@ -12,7 +12,7 @@ namespace Assets.Scripts.EventSystems
         {
             Current = this;
             SubscribePlayerHurt();
-            SubscribeMedicine();
+            SubscribeVaccine();
             SubscribePointsCollected();
         }
 
@@ -49,19 +49,19 @@ namespace Assets.Scripts.EventSystems
         }
         #endregion
 
-        #region Medicine
-        private void SubscribeMedicine()
+        #region Vaccine
+        private void SubscribeVaccine()
         {
-            foreach (IMedicineCollectedHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IMedicineCollectedHandler>())
+            foreach (IVaccineCollectedHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IVaccineCollectedHandler>())
             {
-                OnMedicineCollected += subscriber.OnMedicineCollected;
+                OnVaccineCollected += subscriber.OnVaccineCollected;
             }
         }
 
-        public event Action<int> OnMedicineCollected;
-        public void MedicineCollected(int timer)
+        public event Action<int> OnVaccineCollected;
+        public void VaccineCollected(int timer)
         {
-            OnMedicineCollected?.Invoke(timer);
+            OnVaccineCollected?.Invoke(timer);
         }
         #endregion
     }

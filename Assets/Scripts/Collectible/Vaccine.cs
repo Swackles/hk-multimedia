@@ -11,7 +11,7 @@ namespace Assets.Scripts.Collectible
         public override void Collect()
         {
             gameObject.SetActive(false);
-            EventSystem.Current.MedicineCollected(TimerLength);
+            EventSystem.Current.VaccineCollected(TimerLength);
         }
     }
 }
