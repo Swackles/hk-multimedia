@@ -16,22 +16,10 @@ namespace Assets.Scripts.Collectible
         [Tooltip("How many points this collectible is worth")]
         public int Value = 0;
 
-        [Obsolete("OnCollected is deprecated, please use Collect instead.")]
-        public override void OnCollected()
-        {
-            Collect();
-        }
-
         public override void Collect()
         {
             EventSystem.Current.PointsCollected(Value);
             gameObject.SetActive(false);
-        }
-
-        [Obsolete("OnMissed is deprecated, only use currently is old compatibility.")]
-        public override void OnMissed()
-        {
-
         }
     }
 }
