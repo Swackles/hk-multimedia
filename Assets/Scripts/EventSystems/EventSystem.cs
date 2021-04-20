@@ -12,6 +12,7 @@ namespace Assets.Scripts.EventSystems
         {
             Current = this;
             SubscribeMedicine();
+            SubscribePointsCollected();
         }
 
         #region PlayerHurt
@@ -31,6 +32,22 @@ namespace Assets.Scripts.EventSystems
 
         #endregion
 
+        #region PointsCollected
+        private void SubscribePointsCollected()
+        {
+            foreach (IPointsCollected subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IPointsCollected>())
+            {
+                OnPointsCollected += subscriber.OnPointsCollected;
+            }
+        }
+
+        public event Action<int> OnPointsCollected;
+        public void PointsCollected(int value)
+        {
+            OnPointsCollected?.Invoke(value);
+        }
+        #endregion
+
         #region Medicine
         private void SubscribeMedicine()
         {
@@ -38,25 +55,12 @@ namespace Assets.Scripts.EventSystems
             {
                 OnMedicineCollected += subscriber.OnMedicineCollected;
             }
-
-            foreach (IMedicineMissedHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IMedicineMissedHandler>())
-            {
-                OnMedicineMissed += subscriber.OnMedicineMissed;
-            }
         }
 
-        public event Action OnMedicineCollected;
-        public void MedicineCollected()
+        public event Action<int> OnMedicineCollected;
+        public void MedicineCollected(int timer)
         {
-            if (OnMedicineCollected != null)
-                OnMedicineCollected();
-        }
-
-        public event Action OnMedicineMissed;
-        public void MedicineMissed()
-        {
-            if (OnMedicineMissed != null)
-                OnMedicineMissed();
+            OnMedicineCollected?.Invoke(timer);
         }
         #endregion
     }
