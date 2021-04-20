@@ -12,7 +12,24 @@ namespace Assets.Scripts.EventSystems
         {
             Current = this;
             SubscribeMedicine();
+            SubscribePointsCollected();
         }
+
+        #region PointsCollected
+        private void SubscribePointsCollected()
+        {
+            foreach (IPointsCollected subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IPointsCollected>())
+            {
+                OnPointsCollected += subscriber.OnPointsCollected;
+            }
+        }
+
+        public event Action<int> OnPointsCollected;
+        public void PointsCollected(int value)
+        {
+            OnPointsCollected?.Invoke(value);
+        }
+        #endregion
 
         #region Medicine
         private void SubscribeMedicine()
