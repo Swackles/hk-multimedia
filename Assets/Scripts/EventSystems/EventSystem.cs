@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using QFSW.QC;
 
 namespace Assets.Scripts.EventSystems
 {
+    [CommandPrefix("Trigger.")]
     public class EventSystem : MonoBehaviour
     {
         public static EventSystem Current;
@@ -56,12 +58,25 @@ namespace Assets.Scripts.EventSystems
             {
                 OnVaccineCollected += subscriber.OnVaccineCollected;
             }
+
+            foreach(IVaccineEffectEndHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IVaccineEffectEndHandler>())
+            {
+                OnVaccineEffectEnd += subscriber.OnVaccineEffectEnd;
+            }
         }
 
+        public event Action OnVaccineEffectEnd;
         public event Action<int> OnVaccineCollected;
+
+        [Command("CollectVaccine", "Triggers the vaccine collected")]
         public void VaccineCollected(int timer)
         {
             OnVaccineCollected?.Invoke(timer);
+        }
+
+        public void VaccineEffectEnd()
+        {
+            OnVaccineEffectEnd?.Invoke();
         }
         #endregion
     }
