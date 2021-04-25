@@ -16,6 +16,21 @@ namespace Assets.Scripts.EventSystems
             SubscribeDeath();
         }
 
+        #region PlayerHurt
+        private void SubscribePlayerHurt()
+        {
+            foreach (IPlayerHurtHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IPlayerHurtHandler>())
+            {
+                OnPlayerHurt += subscriber.OnPlayerHurt;
+            }
+        }
+
+        public event Action<int, int> OnPlayerHurt;
+        public void PlayerHurt(int oldHealth, int newHealth)
+        {
+            OnPlayerHurt?.Invoke(oldHealth, newHealth);
+        }
+
         #region Death
         private void SubscribeDeath()
         {
