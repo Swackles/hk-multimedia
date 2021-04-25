@@ -2,9 +2,11 @@
 using Assets.Scripts.Collectible;
 using Assets.Scripts.EventSystems;
 using System;
+using QFSW.QC;
 
 namespace Assets.Scripts.Entity
 {
+    [CommandPrefix("Entity.Player.")]
     public class Player : AbstractEntity
     {
         public float JumpVelocity = 100f;
@@ -49,11 +51,18 @@ namespace Assets.Scripts.Entity
             EventSystem.Current.PlayerHurt(oldHealth, Health);
 
             if (Health < 1) {
-                transform.position = _spawnPoint;
-                Health = _maxHealth;
+                Kill();
             } else 
                 RB.AddForce(KnockBack);
-        }  
+        }
+
+        [Command("Kill")]
+        public void Kill()
+        {
+            EventSystem.Current.PlayerDeath(this);
+            transform.position = _spawnPoint;
+            Health = _maxHealth;
+        }
     }
 }
 
