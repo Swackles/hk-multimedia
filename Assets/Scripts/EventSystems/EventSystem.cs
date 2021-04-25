@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using Assets.Scripts.Entity;
 
 namespace Assets.Scripts.EventSystems
 {
@@ -12,8 +13,24 @@ namespace Assets.Scripts.EventSystems
         {
             Current = this;
             SubscribeMedicine();
-            SubscribePointsCollected();
+            SubscribeDeath();
         }
+
+        #region Death
+        private void SubscribeDeath()
+        {
+            foreach (IPlayerDeathHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IPlayerDeathHandler>())
+            {
+                OnDeath += subscriber.OnPlayerDeath;
+            }
+        }
+
+        public event Action<Player> OnDeath;
+        public void PlayerDeath(Player player)
+        {
+            OnDeath?.Invoke(player);
+        }
+        #endregion
 
         #region PointsCollected
         private void SubscribePointsCollected()
