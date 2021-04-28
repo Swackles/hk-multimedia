@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Linq;
 using Assets.Scripts.EventSystems;
+using Assets.Scripts.Entity;
 
 namespace Assets.Scripts.Overlay
 {
-    class HealthOverlay : MonoBehaviour, IPlayerHurtHandler
+    class HealthOverlay : MonoBehaviour, IPlayerHurtHandler, IPlayerDeathHandler
     {
         private RectTransform[] _hearts;
 
@@ -18,6 +19,11 @@ namespace Assets.Scripts.Overlay
             {
                 _hearts[i].gameObject.SetActive(i < newHP);
             }
+        }
+
+        public void OnPlayerDeath(Player player)
+        {
+            OnPlayerHurt(0, player.Health);
         }
     }
 }
