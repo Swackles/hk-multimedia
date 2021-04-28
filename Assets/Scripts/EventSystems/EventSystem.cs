@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using QFSW.QC;
+using Assets.Scripts.Entity;
 
 namespace Assets.Scripts.EventSystems
 {
@@ -13,9 +14,11 @@ namespace Assets.Scripts.EventSystems
         private void Awake()
         {
             Current = this;
+
             SubscribePlayerHurt();
             SubscribeVaccine();
             SubscribePointsCollected();
+            SubscribeDeath();
         }
 
         #region PlayerHurt
@@ -33,6 +36,22 @@ namespace Assets.Scripts.EventSystems
             OnPlayerHurt?.Invoke(oldHealth, newHealth);
         }
 
+        #endregion
+        
+        #region Death
+        private void SubscribeDeath()
+        {
+            foreach (IPlayerDeathHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IPlayerDeathHandler>())
+            {
+                OnDeath += subscriber.OnPlayerDeath;
+            }
+        }
+
+        public event Action<Player> OnDeath;
+        public void PlayerDeath(Player player)
+        {
+            OnDeath?.Invoke(player);
+        }
         #endregion
 
         #region PointsCollected
