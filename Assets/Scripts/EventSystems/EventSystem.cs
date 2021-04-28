@@ -35,7 +35,6 @@ namespace Assets.Scripts.EventSystems
         {
             OnPlayerHurt?.Invoke(oldHealth, newHealth);
         }
-
         #endregion
         
         #region Death
