@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26f4ea10a57f9ad43b2fa2882a1aafe7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audio:
+    Collect: {fileID: 8300000, guid: f4535030b6941ea4d8ca574675365848, type: 3}
   Value: 500
 --- !u!95 &5177767153969020822
 Animator:

@@ -133,3 +133,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b04d58ddc7c984d81445b6418d36aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audio:
+    Collect: {fileID: 8300000, guid: 2cfbbae1cfbf1934c9c231ff5ad99b50, type: 3}
+  TimerLength: 5000

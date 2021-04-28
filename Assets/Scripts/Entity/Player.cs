@@ -17,9 +17,9 @@ namespace Assets.Scripts.Entity
         [NonSerialized] public int Health = 3;
 
         [SerializeField] private int _maxHealth = 3;
-        private Vector2 _spawnPoint = new Vector2(0,0);
+        private Vector2 _spawnPoint = new Vector2(0, 0);
 
-        public PlayerAudioPlayer _audio;
+        [SerializeField] private PlayerAudioPlayer _audio;
 
         new public void Start()
         {

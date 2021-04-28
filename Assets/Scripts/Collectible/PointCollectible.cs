@@ -16,8 +16,10 @@ namespace Assets.Scripts.Collectible
         [Tooltip("How many points this collectible is worth")]
         public int Value = 0;
 
-        public override void Collect()
+        public new void Collect()
         {
+            base.Collect();
+
             EventSystem.Current.PointsCollected(Value);
             gameObject.SetActive(false);
         }

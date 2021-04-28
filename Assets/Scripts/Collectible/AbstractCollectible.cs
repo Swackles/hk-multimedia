@@ -1,9 +1,14 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.AudioPlayer;
+using UnityEngine;
 
 namespace Assets.Scripts.Collectible
 {
     public abstract class AbstractCollectible : MonoBehaviour
     {
-        public abstract void Collect();
+        [SerializeField] private CollectiblesAudioPlayer _audio;
+
+        public void Collect() {
+            _audio.Play(_audio.Collect);
+        }
     }
 }
