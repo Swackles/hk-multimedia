@@ -7,7 +7,7 @@ using System.Timers;
 
 namespace Assets.Scripts.Entity
 {
-    public class Granny : AbstractEntity
+    public class Granny : Enemy
     {
         [SerializeField] private Transform[] _patrolPoints;
         [SerializeField] private double _guardFor;
