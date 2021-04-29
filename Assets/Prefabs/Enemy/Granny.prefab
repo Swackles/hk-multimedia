@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 4583020923394076439}
   - component: {fileID: 4583020923394076438}
   - component: {fileID: 4583020923394076441}
-  - component: {fileID: 4583020923394076440}
   - component: {fileID: 4583020923394076434}
   - component: {fileID: 4583020923394076437}
   m_Layer: 0
-  m_Name: Granny 1
+  m_Name: Granny
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,19 +130,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.274125, y: 10.577007}
   m_EdgeRadius: 0
---- !u!114 &4583020923394076440
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4583020923394076443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0087c14a950d2b84db40340ca3644745, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HitPower: 100
 --- !u!50 &4583020923394076434
 Rigidbody2D:
   serializedVersion: 4
@@ -178,5 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
+  HitPower: 100
   _patrolPoints: []
   _guardFor: 3000

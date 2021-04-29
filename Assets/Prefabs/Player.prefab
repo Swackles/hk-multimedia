@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6124688233984581638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.18400227, y: -0.46999344, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,11 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c0453e6ef25a5479a409917b810b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  JumpVelocity: 100
+  Speed: 3
+  _maxVelocity: {x: 22, y: 22}
+  JumpVelocity: 65
   _maxHealth: 3
   _audio:
-    Walking: {fileID: 8300000, guid: 208a3dde594e8154baee628fc01b32ca, type: 3}
+    Walking: {fileID: 8300000, guid: d58e943cf9dcd9f4e80c9683d730abb7, type: 3}
     Hurt: {fileID: 8300000, guid: 1177027a38a926a4a9c346acc163e3cc, type: 3}
     Jump: {fileID: 8300000, guid: 9c22cef3d7be61446b68641e7d1a375f, type: 3}
 --- !u!212 &6124688233984581634
@@ -94,15 +95,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4289dd52777e0d84b81a452d29691939, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 021d8dbe54eef6547959f17bdcd60be6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.8, y: 19.2}
+  m_Size: {x: 2.34375, y: 3.125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &6124688233984581635
@@ -138,7 +139,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 2.45, y: 5.12}
+  m_Size: {x: 1.4908378, y: 3.1709046}
   m_Direction: 0
 --- !u!50 &6124688233984581632
 Rigidbody2D:
@@ -155,7 +156,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 16
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

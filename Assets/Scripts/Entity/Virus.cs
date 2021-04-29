@@ -7,7 +7,7 @@ namespace Assets.Scripts.Entity
 {
     [CommandPrefix("Entity.Virus.")]
     [RequireComponent(typeof(LineRenderer))]
-    public class Virus : AbstractEntity, IVaccineCollectedHandler, IVaccineEffectEndHandler
+    public class Virus : Enemy, IVaccineCollectedHandler, IVaccineEffectEndHandler
     {
         public float SpeedModifier = 1f;
         private float _originalSpeedModifier;

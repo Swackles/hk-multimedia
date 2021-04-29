@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6936579108870773941}
   - component: {fileID: 6936579108870773940}
   m_Layer: 0
-  m_Name: Virus 1
+  m_Name: Virus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 571b4efd938a0704da27603b960d06c7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 52eaa0aaf51a45643a6dbca0d522223a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.36571428, y: 0.36571428}
+  m_Size: {x: 10.8, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 60
+  SpeedModifier: 1
   _range: 10
   _overextend: 3
   _cooldownTime: 2000
@@ -254,7 +255,7 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0000035762787, y: 2.69871}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4.973638
 --- !u!114 &6936579108870773940
@@ -269,4 +270,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0087c14a950d2b84db40340ca3644745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 1
   HitPower: 100
