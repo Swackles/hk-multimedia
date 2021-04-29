@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 94462283742563520}
   - component: {fileID: 94462283742563535}
   - component: {fileID: 1800320006209342748}
-  - component: {fileID: 7520168954202112955}
+  - component: {fileID: 6895909054966447266}
   - component: {fileID: 5948436206443364290}
   m_Layer: 0
   m_Name: Vaccine
@@ -83,11 +83,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31b04d58ddc7c984d81445b6418d36aa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  TimerLength: 4990
---- !u!95 &7520168954202112955
-Animator:
-  serializedVersion: 3
+  m_EditorClassIdentifier:
+  _audio:
+    Collect: {fileID: 8300000, guid: 2cfbbae1cfbf1934c9c231ff5ad99b50, type: 3}
+  TimerLength: 5000
+--- !u!82 &6895909054966447266
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
