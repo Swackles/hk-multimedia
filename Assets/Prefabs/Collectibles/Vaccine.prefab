@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 94462283742563535}
   - component: {fileID: 1800320006209342748}
   - component: {fileID: 6895909054966447266}
-  - component: {fileID: 7520168954202112955}
   - component: {fileID: 5948436206443364290}
   m_Layer: 0
   m_Name: Vaccine
