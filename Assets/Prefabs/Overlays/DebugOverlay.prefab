@@ -52,8 +52,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40264706dcdc8fe45886e18f6d6ba5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Default: 1
-  Key: 283
+  _activateOnStartup: 1
+  _key: 283
 --- !u!223 &1960166801380983125
 Canvas:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: v2021.03.07
+  m_Text: v1.0.0-alpha
 --- !u!1 &3645021940604584056
 GameObject:
   m_ObjectHideFlags: 0
