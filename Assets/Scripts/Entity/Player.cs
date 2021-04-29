@@ -12,13 +12,14 @@ namespace Assets.Scripts.Entity
     [RequireComponent(typeof(AudioSource))]
     public class Player : AbstractEntity
     {
+        [SerializeField] private Vector2 _maxVelocity = new Vector2(22, 22);
         public float JumpVelocity = 100f;
         public static Player Current;
 
         [NonSerialized] public int Health = 3;
 
         [SerializeField] private int _maxHealth = 3;
-        private Vector2 _spawnPoint = new Vector2(0, 0);
+        private Vector2 _spawnPoint;
 
         [SerializeField] private PlayerAudioPlayer _audio;
 
@@ -26,6 +27,8 @@ namespace Assets.Scripts.Entity
         {
             base.Start();
             Current = this;
+
+            _spawnPoint = transform.position;
 
             _audio.Source = GetComponent<AudioSource>();
         }
@@ -42,6 +45,11 @@ namespace Assets.Scripts.Entity
                 RB.velocity = Vector2.up * JumpVelocity;
                 _audio.Play(_audio.Jump);
             }
+
+            if (RB.velocity.x > _maxVelocity.x)
+                RB.velocity = new Vector2(_maxVelocity.x, RB.velocity.y);
+            else if (RB.velocity.x < _maxVelocity.x * -1)
+                RB.velocity = new Vector2(_maxVelocity.x * -1, RB.velocity.y);
 
             base.FixedUpdate();
         }
@@ -76,9 +84,10 @@ namespace Assets.Scripts.Entity
         [Command("Kill")]
         public void Kill()
         {
-            EventSystem.Current.PlayerDeath(this);
             transform.position = _spawnPoint;
             Health = _maxHealth;
+
+            EventSystem.Current.PlayerDeath(this);
         }
     }
 }

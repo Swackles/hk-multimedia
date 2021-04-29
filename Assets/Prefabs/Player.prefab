@@ -48,8 +48,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37c0453e6ef25a5479a409917b810b82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  JumpVelocity: 100
+  Speed: 3
+  _maxVelocity: {x: 22, y: 22}
+  JumpVelocity: 65
   _maxHealth: 3
   _audio:
     Walking: {fileID: 8300000, guid: d58e943cf9dcd9f4e80c9683d730abb7, type: 3}
@@ -137,8 +138,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.013702393, y: -0.06284046}
-  m_Size: {x: 1.4908378, y: 3.3577585}
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.4908378, y: 3.1709046}
   m_Direction: 0
 --- !u!50 &6124688233984581632
 Rigidbody2D:
@@ -155,7 +156,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 3
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 16
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
