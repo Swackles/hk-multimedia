@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using QFSW.QC;
 using Assets.Scripts.Entity;
 
 namespace Assets.Scripts.EventSystems
 {
+    [CommandPrefix("Trigger.")]
     public class EventSystem : MonoBehaviour
     {
         public static EventSystem Current;
@@ -12,7 +14,10 @@ namespace Assets.Scripts.EventSystems
         private void Awake()
         {
             Current = this;
-            SubscribeMedicine();
+
+            SubscribePlayerHurt();
+            SubscribeVaccine();
+            SubscribePointsCollected();
             SubscribeDeath();
         }
 
@@ -31,6 +36,7 @@ namespace Assets.Scripts.EventSystems
             OnPlayerHurt?.Invoke(oldHealth, newHealth);
         }
         #endregion
+        
         #region Death
         private void SubscribeDeath()
         {
@@ -63,19 +69,32 @@ namespace Assets.Scripts.EventSystems
         }
         #endregion
 
-        #region Medicine
-        private void SubscribeMedicine()
+        #region Vaccine
+        private void SubscribeVaccine()
         {
-            foreach (IMedicineCollectedHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IMedicineCollectedHandler>())
+            foreach (IVaccineCollectedHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IVaccineCollectedHandler>())
             {
-                OnMedicineCollected += subscriber.OnMedicineCollected;
+                OnVaccineCollected += subscriber.OnVaccineCollected;
+            }
+
+            foreach(IVaccineEffectEndHandler subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IVaccineEffectEndHandler>())
+            {
+                OnVaccineEffectEnd += subscriber.OnVaccineEffectEnd;
             }
         }
 
-        public event Action<int> OnMedicineCollected;
-        public void MedicineCollected(int timer)
+        public event Action OnVaccineEffectEnd;
+        public event Action<int> OnVaccineCollected;
+
+        [Command("CollectVaccine", "Triggers the vaccine collected")]
+        public void VaccineCollected(int timer)
         {
-            OnMedicineCollected?.Invoke(timer);
+            OnVaccineCollected?.Invoke(timer);
+        }
+
+        public void VaccineEffectEnd()
+        {
+            OnVaccineEffectEnd?.Invoke();
         }
         #endregion
     }

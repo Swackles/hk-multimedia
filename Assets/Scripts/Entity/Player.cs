@@ -7,6 +7,7 @@ using QFSW.QC;
 
 namespace Assets.Scripts.Entity
 {
+
     [CommandPrefix("Entity.Player.")]
     [RequireComponent(typeof(AudioSource))]
     public class Player : AbstractEntity
@@ -51,6 +52,7 @@ namespace Assets.Scripts.Entity
                 Collectible.Collect();
         }
 
+        [Command("Hurt")]
         public void Hurt(Vector2 KnockBack) 
         {
             _audio.Play(_audio.Hurt);
