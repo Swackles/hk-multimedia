@@ -6,6 +6,7 @@ using QFSW.QC;
 
 namespace Assets.Scripts.Entity
 {
+
     [CommandPrefix("Entity.Player.")]
     public class Player : AbstractEntity
     {
@@ -42,6 +43,7 @@ namespace Assets.Scripts.Entity
                 Collectible.Collect();
         }
 
+        [Command("Hurt")]
         public void Hurt(Vector2 KnockBack) 
         {
             int oldHealth = Health;

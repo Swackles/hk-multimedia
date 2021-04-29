@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Collectible
 {
-    public class Medicine : AbstractCollectible
+    public class Vaccine : AbstractCollectible
     {
         [Tooltip("The time length in ms the effect will take")]
         [SerializeField] private int TimerLength = 5000;
@@ -11,7 +11,7 @@ namespace Assets.Scripts.Collectible
         public override void Collect()
         {
             gameObject.SetActive(false);
-            EventSystem.Current.MedicineCollected(TimerLength);
+            EventSystem.Current.VaccineCollected(TimerLength);
         }
     }
 }
