@@ -10,7 +10,6 @@ namespace Assets.Scripts.Overlay.Modifiers
 
         private Stopwatch _stopwatch = new Stopwatch();
         private int _time;
-        private int _vertexCount = 40;
 
         /// <summary>
         /// The amount of time elapsed
