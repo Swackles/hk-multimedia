@@ -27,7 +27,7 @@ namespace Assets.Scripts.Entity
         [SerializeField] private float _cooldownTime = 2000f;
         
         
-        [ReadOnly] public bool Cooldown = false;
+        public bool Cooldown = false;
 
         public void Awake()
         {
