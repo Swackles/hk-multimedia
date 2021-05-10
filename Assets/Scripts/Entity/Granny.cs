@@ -1,7 +1,5 @@
 ﻿//_patrolPoints from a prefab must be assigned to Grannys array before patrolling can work.
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.Timers;
 
@@ -12,19 +10,17 @@ namespace Assets.Scripts.Entity
         [SerializeField] private Transform[] _patrolPoints;
         [SerializeField] private double _guardFor;
         private int _randomPoint;
-        private static System.Timers.Timer _guardTimer;
+        private static Timer _guardTimer;
         private int _guardTime = 1;
         
         //Granny selects a random patrol point from the array. Consecutive selections of the same point are avoided.
         new private void Start()
         {
             base.Start();
-            _guardTimer = new System.Timers.Timer(_guardFor);
-            _guardTimer.Elapsed += (object sender, System.Timers.ElapsedEventArgs e) => _guardTime = 0;
+            _guardTimer = new Timer(_guardFor);
+            _guardTimer.Elapsed += (object sender, ElapsedEventArgs e) => _guardTime = 0;
             _randomPoint = Random.Range(0, _patrolPoints.Length);
         }
-        //Overwrite base of abstractentity.
-        new private void FixedUpdate(){ }
 
         //Animation, flip, timing and movement from point to point.
         private void Update()

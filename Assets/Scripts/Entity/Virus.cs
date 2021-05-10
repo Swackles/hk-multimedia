@@ -70,9 +70,6 @@ namespace Assets.Scripts.Entity
             }
         }
 
-        // Need to overwrite animations coming from entity
-        new private void FixedUpdate() { }
-
         #region Debug
         [Command("Debug", MonoTargetType.All)]
         private void ToggleDebug()

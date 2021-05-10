@@ -33,7 +33,7 @@ namespace Assets.Scripts.Entity
             _audio.Source = GetComponent<AudioSource>();
         }
 
-        new public void FixedUpdate()
+        public void FixedUpdate()
         {
             Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
             /**
@@ -50,8 +50,29 @@ namespace Assets.Scripts.Entity
                 RB.velocity = new Vector2(_maxVelocity.x, RB.velocity.y);
             else if (RB.velocity.x < _maxVelocity.x * -1)
                 RB.velocity = new Vector2(_maxVelocity.x * -1, RB.velocity.y);
+            
+            #region Animator Logic
 
-            base.FixedUpdate();
+            Movement = Movement * Speed;
+            RB.velocity += Movement;
+
+            Animator.SetFloat("Speed", Math.Abs(RB.velocity.x));
+
+            Animator.SetBool("Falling", false);
+            Animator.SetBool("Jumping", false);
+
+            if (RB.velocity.y > 0.2f)
+                Animator.SetBool("Jumping", true);
+            else if (RB.velocity.y < -0.2f)
+                Animator.SetBool("Falling", true);
+
+
+            if (RB.velocity.x > 0.1f)
+                SR.flipX = false;
+            else if (RB.velocity.x < -0.1f)
+                SR.flipX = true;
+
+            #endregion
         }
 
         public void OnTriggerEnter2D(Collider2D other)
