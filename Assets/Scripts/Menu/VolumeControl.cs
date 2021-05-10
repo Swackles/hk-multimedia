@@ -1,14 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 
-public class VolumeControl : MonoBehaviour
+namespace Assets.Scripts.Menu
 {
-    public AudioMixer audioMixer;
-
-    public void SetVolumeTo(float volume)
+    public class VolumeControl : MonoBehaviour
     {
-        audioMixer.SetFloat("Volume", volume);
+        public AudioMixer audioMixer;
+
+        public void SetVolumeTo(float volume)
+        {
+            audioMixer.SetFloat("Volume", volume);
+        }
     }
 }
