@@ -27,7 +27,7 @@ namespace Assets.Scripts.Entity
         [SerializeField] private float _cooldownTime = 2000f;
         
         
-        [ReadOnly] public bool Cooldown = false;
+        public bool Cooldown = false;
 
         public void Awake()
         {
@@ -69,9 +69,6 @@ namespace Assets.Scripts.Entity
                 }
             }
         }
-
-        // Need to overwrite animations coming from entity
-        new private void FixedUpdate() { }
 
         #region Debug
         [Command("Debug", MonoTargetType.All)]
