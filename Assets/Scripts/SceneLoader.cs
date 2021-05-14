@@ -6,7 +6,7 @@ namespace Assets.Scripts
     [CommandPrefix("SceneLoader.")]
     public static class SceneLoader
     {
-        private static void LoadScene(string name)
+        public static void LoadScene(string name)
         {
             SceneManager.LoadScene(name);
         }
