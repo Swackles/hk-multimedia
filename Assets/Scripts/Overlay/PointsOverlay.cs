@@ -9,7 +9,7 @@ namespace Assets.Scripts.Overlay
     [RequireComponent(typeof(Text))]
     class PointsOverlay : MonoBehaviour, IPointsCollected, IPlayerDeathHandler
     {
-        private int _points = 0;
+        public int _points = 0;
         [Tooltip("The string that goes before the points")]
         [SerializeField] private string _prefix = "";
         [Tooltip("The string that goes after the points")]
@@ -30,6 +30,7 @@ namespace Assets.Scripts.Overlay
 
         public void OnPlayerDeath(Player player)
         {
+            FindObjectOfType<FinalScore>().Results();
             _points = 0;
             UpdatePoints();
         }
