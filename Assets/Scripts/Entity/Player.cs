@@ -13,6 +13,7 @@ namespace Assets.Scripts.Entity
     public class Player : AbstractEntity
     {
         [SerializeField] private Vector2 _maxVelocity = new Vector2(22, 22);
+        [SerializeField] GameObject gameoverscreen;
         public float JumpVelocity = 100f;
         public static Player Current;
 
@@ -107,7 +108,7 @@ namespace Assets.Scripts.Entity
         {
             transform.position = _spawnPoint;
             Health = _maxHealth;
-
+            gameoverscreen.SetActive(true);
             EventSystem.Current.PlayerDeath(this);
         }
     }
