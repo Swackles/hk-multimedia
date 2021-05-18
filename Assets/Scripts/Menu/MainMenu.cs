@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
 
 namespace Assets.Scripts.Menu
 {

@@ -108,6 +108,7 @@ namespace Assets.Scripts.Entity
         {
             transform.position = _spawnPoint;
             Health = _maxHealth;
+
             EventSystem.Current.PlayerDeath(this);
         }
     }
