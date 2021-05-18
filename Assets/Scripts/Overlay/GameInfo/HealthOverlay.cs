@@ -3,7 +3,7 @@ using System.Linq;
 using Assets.Scripts.EventSystems;
 using Assets.Scripts.Entity;
 
-namespace Assets.Scripts.Overlay
+namespace Assets.Scripts.Overlay.GameInfo
 {
     class HealthOverlay : MonoBehaviour, IPlayerHurtHandler, IPlayerDeathHandler
     {
