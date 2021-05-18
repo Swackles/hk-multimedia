@@ -108,7 +108,7 @@ namespace Assets.Scripts.Entity
         {
             transform.position = _spawnPoint;
             Health = _maxHealth;
-            gameoverscreen.SetActive(true);
+
             EventSystem.Current.PlayerDeath(this);
         }
     }

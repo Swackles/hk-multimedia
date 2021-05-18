@@ -1,22 +1,20 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Audio;
 
 namespace Assets.Scripts.Menu
 {
     public class MainMenu : MonoBehaviour
     {
+        private bool _mute;
+        
         public void StartGame()
         {
-            SceneManager.LoadScene(1);
+            SceneLoader.LevelOne();
         }
 
         public void QuitGame()
         {
             Application.Quit();
         }
-
-        private bool _mute;
 
         public void SoundToggle()
         {

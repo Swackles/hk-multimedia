@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using Assets.Scripts.Overlay.GameInfo;
 
 namespace Assets.Scripts.Overlay
 {
@@ -9,7 +10,7 @@ namespace Assets.Scripts.Overlay
         public void Results()
         {
             _text = GetComponent<Text>();
-            _text.text = "Final score: " + FindObjectOfType<PointsOverlay>()._points.ToString();
+            _text.text = "Final score: " + PointsOverlay.Current.Points.ToString();
         }
 
     }

@@ -22,5 +22,8 @@ namespace Assets.Scripts
 
         [Command]
         public static void LevelTwo() { LoadScene("Level_2"); }
+
+        [Command]
+        public static void ReloadScene() { LoadScene(SceneManager.GetActiveScene().name); }
     }
 }

@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using Assets.Scripts.EventSystems;
-using Assets.Scripts.Entity;
 
-namespace Assets.Scripts.Overlay
+namespace Assets.Scripts.Overlay.GameInfo
 {
 
     [RequireComponent(typeof(Text))]
-    class PointsOverlay : MonoBehaviour, IPointsCollected, IPlayerDeathHandler
+    class PointsOverlay : MonoBehaviour, IPointsCollected
     {
         public int _points = 0;
         [Tooltip("The string that goes before the points")]
@@ -16,8 +15,13 @@ namespace Assets.Scripts.Overlay
         [SerializeField] private string _suffix = "";
         private Text _text;
 
+        public static PointsOverlay Current;
+
+        public int Points { get { return _points; } }
+
         public void Awake()
         {
+            Current = this;
             _text = GetComponent<Text>();
             UpdatePoints();
         }
@@ -28,16 +32,6 @@ namespace Assets.Scripts.Overlay
             UpdatePoints();
         }
 
-        public void OnPlayerDeath(Player player)
-        {
-            FindObjectOfType<FinalScore>().Results();
-            _points = 0;
-            UpdatePoints();
-        }
-
-        public void UpdatePoints()
-        {
-            _text.text = _prefix + _points.ToString() + _suffix;
-        }
+        public void UpdatePoints() { _text.text = _prefix + _points.ToString() + _suffix; }
     }
 }
