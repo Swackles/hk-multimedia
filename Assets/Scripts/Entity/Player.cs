@@ -7,7 +7,7 @@ using QFSW.QC;
 
 namespace Assets.Scripts.Entity
 {
-
+    
     [CommandPrefix("Entity.Player.")]
     [RequireComponent(typeof(AudioSource))]
     public class Player : AbstractEntity
@@ -23,6 +23,12 @@ namespace Assets.Scripts.Entity
         private Vector2 _spawnPoint;
 
         [SerializeField] private PlayerAudioPlayer _audio;
+        private QuantumConsole _console;
+
+        /// <summary>
+        /// If true the user will not be able to control the player
+        /// </summary>
+        private bool _controlsDisabled = false;
 
         new public void Start()
         {
@@ -32,19 +38,26 @@ namespace Assets.Scripts.Entity
             _spawnPoint = transform.position;
 
             _audio.Source = GetComponent<AudioSource>();
+            _console = FindObjectOfType<QuantumConsole>();
+            
+            _console.OnActivate += () => { _controlsDisabled = true; }; // Disable player controls when console gets activated
+            _console.OnDeactivate += () => { _controlsDisabled = false; }; // Enable player controls when console gets closed
         }
 
         public void FixedUpdate()
         {
-            Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
-            /**
-             * ##### Why GetButton got replaced with GetKey #####
-             * For some reason GetButton is unreliable and won't always register the key pressed
-             */
-            if (Input.GetKey(KeyCode.Space) && RB.velocity.y == 0)
+            if (!_controlsDisabled)
             {
-                RB.velocity = Vector2.up * JumpVelocity;
-                _audio.Play(_audio.Jump);
+                Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+                /**
+                 * ##### Why GetButton got replaced with GetKey #####
+                 * For some reason GetButton is unreliable and won't always register the key pressed
+                 */
+                if (Input.GetKey(KeyCode.Space) && RB.velocity.y == 0)
+                {
+                    RB.velocity = Vector2.up * JumpVelocity;
+                    _audio.Play(_audio.Jump);
+                }
             }
 
             if (RB.velocity.x > _maxVelocity.x)
