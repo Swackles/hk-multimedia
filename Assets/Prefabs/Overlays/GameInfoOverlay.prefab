@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 645976337594304516}
   - component: {fileID: 645976337594304519}
   - component: {fileID: 645976337594304518}
+  - component: {fileID: 2149939066981914274}
   m_Layer: 5
   m_Name: GameInfoOverlay
   m_TagString: Debug
@@ -150,6 +151,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2149939066981914274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645976337594316793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f157111c4abb98148be506a449c7535b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &686350318634682182
 GameObject:
   m_ObjectHideFlags: 0
@@ -497,7 +510,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4109419785645784760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c04d4526d0a0d4fbef43aa1e00e3c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 29e235d9c0b83414fbb0afe437e0120a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefix: 'Points: '
@@ -601,7 +614,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5881785017979555302}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46c150ddb0f042c458edea58e2626b8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a2c936434f79824e81489ae1ae3733d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6573538667213426851

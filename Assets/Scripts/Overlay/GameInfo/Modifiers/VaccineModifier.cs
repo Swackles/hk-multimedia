@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using UnityEngine;
 
-namespace Assets.Scripts.Overlay.Modifiers
+namespace Assets.Scripts.Overlay.GameInfo.Modifiers
 {
     class VaccineModifier : MonoBehaviour, IVaccineCollectedHandler
     {
