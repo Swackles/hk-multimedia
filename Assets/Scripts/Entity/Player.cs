@@ -23,6 +23,14 @@ namespace Assets.Scripts.Entity
         private Vector2 _spawnPoint;
 
         [SerializeField] private PlayerAudioPlayer _audio;
+        private CapsuleCollider2D _collider;
+
+        /// <summary>
+        /// Checks if player is on the ground
+        /// </summary>
+        public bool IsGrounded { get {
+            return Physics2D.Raycast(transform.position, Vector2.down, _collider.bounds.extents.y + 0.1f, LayerMask.GetMask("Default"));
+        } }
 
         new public void Start()
         {
@@ -31,6 +39,7 @@ namespace Assets.Scripts.Entity
 
             _spawnPoint = transform.position;
 
+            _collider = GetComponent<CapsuleCollider2D>();
             _audio.Source = GetComponent<AudioSource>();
         }
 
@@ -41,7 +50,7 @@ namespace Assets.Scripts.Entity
              * ##### Why GetButton got replaced with GetKey #####
              * For some reason GetButton is unreliable and won't always register the key pressed
              */
-            if (Input.GetKey(KeyCode.Space) && RB.velocity.y == 0)
+            if (Input.GetKey(KeyCode.Space) && IsGrounded)
             {
                 RB.velocity = Vector2.up * JumpVelocity;
                 _audio.Play(_audio.Jump);
