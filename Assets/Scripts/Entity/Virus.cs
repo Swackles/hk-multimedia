@@ -1,12 +1,13 @@
 ﻿using System.Timers;
 using Assets.Scripts.EventSystems;
+using Assets.Scripts.AudioPlayer;
 using UnityEngine;
 using QFSW.QC;
 
 namespace Assets.Scripts.Entity
 {
     [CommandPrefix("Entity.Virus.")]
-    [RequireComponent(typeof(LineRenderer))]
+    [RequireComponent(typeof(LineRenderer), typeof(AudioSource))]
     public class Virus : Enemy, IVaccineCollectedHandler, IVaccineEffectEndHandler
     {
         public float SpeedModifier = 1f;
@@ -25,19 +26,31 @@ namespace Assets.Scripts.Entity
 
         [Tooltip("Cooldown period in ms after an attack that the virus can't attack again")]
         [SerializeField] private float _cooldownTime = 2000f;
-        
+
+        [SerializeField] private VirusAudioPlayer _audio;
         
         public bool Cooldown = false;
+        private bool _lastCooldown;
 
         public void Awake()
         {
+            _lastCooldown = Cooldown;
+
             _originalSpeedModifier = SpeedModifier;
             _lr = GetComponent<LineRenderer>();
+            
+            _audio.Source = GetComponent<AudioSource>();
         }
 
         public void Update()
         {
             float step = Speed * SpeedModifier * Time.deltaTime;
+
+            // This is stupid, but can't call auido play from the event.
+            if (_lastCooldown != Cooldown  && _lastCooldown == true)
+                _audio.Play(_audio.AttackCooldownReset);
+
+            _lastCooldown = Cooldown;
 
             if (_debugMode)
             {
@@ -50,7 +63,8 @@ namespace Assets.Scripts.Entity
             bool isPlayerInRange = _range >= Vector2.Distance(transform.position, Player.Current.transform.position);
 
             // Handles movement
-            if (!Cooldown && isPlayerInRange && _target == null) // If virus can atatck the player
+            // Makes also sure the cooldown audio effect has finished before starting another attack
+            if (!Cooldown && isPlayerInRange && _target == null && !_audio.Source.isPlaying) // If virus can atatck the player
                 StartAttack();
             else if (_target != null) // If virus is in the middle of the attack
             {
@@ -124,6 +138,7 @@ namespace Assets.Scripts.Entity
         /// </summary>
         private void StartAttack()
         {
+            _audio.Play(_audio.Attack);
             // Calucate the coordinates to attack
             Vector2 player = Player.Current.transform.position;
             Vector2 virus = transform.position;
@@ -157,7 +172,6 @@ namespace Assets.Scripts.Entity
         public void OnVaccineEffectEnd()
         {
             SpeedModifier = _originalSpeedModifier;
-
         }
         #endregion
     }
