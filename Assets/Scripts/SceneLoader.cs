@@ -18,6 +18,12 @@ namespace Assets.Scripts
         public static void MainMenu() { LoadScene("MainMenu"); }
 
         [Command]
+        public static void FinishMenu() { LoadScene("FinishMenu"); }
+
+        [Command]
+        public static void GameOverMenu() { LoadScene("GameOverMenu"); }
+
+        [Command]
         public static void LevelOne() { LoadScene("Level_1"); }
 
         [Command]

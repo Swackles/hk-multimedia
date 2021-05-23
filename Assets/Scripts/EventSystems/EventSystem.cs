@@ -19,6 +19,7 @@ namespace Assets.Scripts.EventSystems
             SubscribeVaccine();
             SubscribePointsCollected();
             SubscribeDeath();
+            LiftDoorEnter();
         }
 
         #region PlayerHurt
@@ -95,6 +96,17 @@ namespace Assets.Scripts.EventSystems
         public void VaccineEffectEnd()
         {
             OnVaccineEffectEnd?.Invoke();
+        }
+        #endregion
+
+        #region Lift
+        public event Action onLiftDoorEnter;
+        public void LiftDoorEnter()
+        {
+            if (onLiftDoorEnter != null)
+            {
+                onLiftDoorEnter();
+            }
         }
         #endregion
     }
