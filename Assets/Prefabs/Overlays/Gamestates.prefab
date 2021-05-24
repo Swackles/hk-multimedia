@@ -1111,6 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOver: {fileID: 136713788795242574}
+  _finish: {fileID: 2740051683269323371}
 --- !u!1 &1843487249631709111
 GameObject:
   m_ObjectHideFlags: 0

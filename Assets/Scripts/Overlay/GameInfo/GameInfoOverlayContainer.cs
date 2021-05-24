@@ -6,7 +6,13 @@ namespace Assets.Scripts.Overlay.GameInfo
 {
     public class GameInfoOverlayContainer : MonoBehaviour, IPlayerDeathHandler
     {
+        public void Start()
+        {
+            EventSystem.Current.onLiftAnimationEnding += onLiftAnimationEnding;
+        }
+        
         public void OnPlayerDeath(Player player) { gameObject.SetActive(false); }
+        public void onLiftAnimationEnding() { gameObject.SetActive(false); }
     }
 
 }
