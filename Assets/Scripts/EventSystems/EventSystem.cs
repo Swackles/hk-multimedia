@@ -20,6 +20,7 @@ namespace Assets.Scripts.EventSystems
             SubscribePointsCollected();
             SubscribeDeath();
             LiftDoorEnter();
+            LiftAnimationEnding();
         }
 
         #region PlayerHurt
@@ -106,6 +107,16 @@ namespace Assets.Scripts.EventSystems
             if (onLiftDoorEnter != null)
             {
                 onLiftDoorEnter();
+            }
+        }
+
+        public event Action onLiftAnimationEnding;
+        public void LiftAnimationEnding()
+        {
+            onLiftAnimationEnding += onLiftAnimationEnding;
+            if (onLiftAnimationEnding != null)
+            {
+                onLiftAnimationEnding();
             }
         }
         #endregion

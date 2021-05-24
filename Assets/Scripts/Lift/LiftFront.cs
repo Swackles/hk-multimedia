@@ -19,7 +19,7 @@ public class LiftFront : MonoBehaviour
 
     private void onAnimationEnded()
     {
-        SceneLoader.FinishMenu();
+        EventSystem.Current.LiftAnimationEnding();
     }
 
 }

@@ -7,12 +7,13 @@ using QFSW.QC;
 
 namespace Assets.Scripts.Entity
 {
-
+    
     [CommandPrefix("Entity.Player.")]
     [RequireComponent(typeof(AudioSource))]
     public class Player : AbstractEntity
     {
         [SerializeField] private Vector2 _maxVelocity = new Vector2(22, 22);
+        [SerializeField] GameObject gameoverscreen;
         public float JumpVelocity = 100f;
         public static Player Current;
 
@@ -23,6 +24,22 @@ namespace Assets.Scripts.Entity
 
         [SerializeField] private PlayerAudioPlayer _audio;
 
+        private QuantumConsole _console;
+
+        /// <summary>
+        /// If true the user will not be able to control the player
+        /// </summary>
+        private bool _controlsDisabled = false;
+        
+        private CapsuleCollider2D _collider;
+
+        /// <summary>
+        /// Checks if player is on the ground
+        /// </summary>
+        public bool IsGrounded { get {
+            return Physics2D.Raycast(transform.position, Vector2.down, _collider.bounds.extents.y + 0.1f, LayerMask.GetMask("Default"));
+        } }
+
         new public void Start()
         {
             base.Start();
@@ -30,20 +47,37 @@ namespace Assets.Scripts.Entity
 
             _spawnPoint = transform.position;
 
+            _collider = GetComponent<CapsuleCollider2D>();
             _audio.Source = GetComponent<AudioSource>();
+            _console = FindObjectOfType<QuantumConsole>();
+            
+            _console.OnActivate += () => { _controlsDisabled = true; }; // Disable player controls when console gets activated
+            _console.OnDeactivate += () => { _controlsDisabled = false; }; // Enable player controls when console gets closed
         }
 
         public void FixedUpdate()
         {
+
+            if (!_controlsDisabled)
+
             Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
             /**
              * ##### Why GetButton got replaced with GetKey #####
              * For some reason GetButton is unreliable and won't always register the key pressed
              */
-            if (Input.GetKey(KeyCode.Space) && RB.velocity.y == 0)
+            if (Input.GetKey(KeyCode.Space) && IsGrounded)
+
             {
-                RB.velocity = Vector2.up * JumpVelocity;
-                _audio.Play(_audio.Jump);
+                Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
+                /**
+                 * ##### Why GetButton got replaced with GetKey #####
+                 * For some reason GetButton is unreliable and won't always register the key pressed
+                 */
+                if (Input.GetKey(KeyCode.Space) && RB.velocity.y == 0)
+                {
+                    RB.velocity = Vector2.up * JumpVelocity;
+                    _audio.Play(_audio.Jump);
+                }
             }
 
             if (RB.velocity.x > _maxVelocity.x)
@@ -107,9 +141,8 @@ namespace Assets.Scripts.Entity
         {
             transform.position = _spawnPoint;
             Health = _maxHealth;
-            SceneLoader.GameOverMenu();
+            gameoverscreen.SetActive(true);
             EventSystem.Current.PlayerDeath(this);
         }
     }
 }
-
