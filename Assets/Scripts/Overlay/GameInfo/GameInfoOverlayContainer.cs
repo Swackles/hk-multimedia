@@ -4,15 +4,10 @@ using Assets.Scripts.Entity;
 
 namespace Assets.Scripts.Overlay.GameInfo
 {
-    public class GameInfoOverlayContainer : MonoBehaviour, IPlayerDeathHandler
-    {
-        public void Start()
-        {
-            EventSystem.Current.onLiftAnimationEnding += onLiftAnimationEnding;
-        }
-        
+    public class GameInfoOverlayContainer : MonoBehaviour, IPlayerDeathHandler, IGameFinished
+    {        
         public void OnPlayerDeath(Player player) { gameObject.SetActive(false); }
-        public void onLiftAnimationEnding() { gameObject.SetActive(false); }
+        public void OnGameFinished() { gameObject.SetActive(false); }
     }
 
 }
