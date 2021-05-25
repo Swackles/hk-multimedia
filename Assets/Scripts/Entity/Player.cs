@@ -3,6 +3,7 @@ using Assets.Scripts.Collectible;
 using Assets.Scripts.EventSystems;
 using Assets.Scripts.AudioPlayer;
 using System;
+using System.Collections;
 using QFSW.QC;
 
 namespace Assets.Scripts.Entity
@@ -14,6 +15,8 @@ namespace Assets.Scripts.Entity
     {
         [SerializeField] private Vector2 _maxVelocity = new Vector2(22, 22);
         [SerializeField] GameObject gameoverscreen;
+        private float _flashDuration = 0.2f;
+        private int _flashRepeat = 5;
         public float JumpVelocity = 100f;
         public static Player Current;
 
@@ -118,6 +121,7 @@ namespace Assets.Scripts.Entity
         [Command("Hurt")]
         public void Hurt(Vector2 KnockBack) 
         {
+            StartCoroutine(FlashPlayer());
             _audio.Play(_audio.Hurt);
             int oldHealth = Health;
 
@@ -143,6 +147,16 @@ namespace Assets.Scripts.Entity
             Health = _maxHealth;
             gameoverscreen.SetActive(true);
             EventSystem.Current.PlayerDeath(this);
+        }
+        public IEnumerator FlashPlayer()
+        {
+            for (int i = 0; i < _flashRepeat; i++)
+                {
+                SR.color = Color.red;
+                yield return new WaitForSeconds(_flashDuration);
+                SR.color = Color.white;
+                yield return new WaitForSeconds(_flashDuration);
+                }
         }
     }
 }
