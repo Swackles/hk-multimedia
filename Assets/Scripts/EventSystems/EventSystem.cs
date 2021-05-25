@@ -33,7 +33,7 @@ namespace Assets.Scripts.EventSystems
         }
 
         public event Action OnGameFinished;
-        public void PlayerHurt()
+        public void GameFinished()
         {
             OnGameFinished?.Invoke();
         }

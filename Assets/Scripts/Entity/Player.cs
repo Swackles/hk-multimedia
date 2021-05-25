@@ -54,6 +54,11 @@ namespace Assets.Scripts.Entity
             _console.OnDeactivate += () => { _controlsDisabled = false; }; // Enable player controls when console gets closed
         }
 
+        public void GameFinished()
+        {
+            gameObject.SetActive(false);
+        }
+
         public void FixedUpdate()
         {
 
