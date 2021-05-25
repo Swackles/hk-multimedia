@@ -14,9 +14,10 @@ namespace Assets.Scripts.Entity
     public class Player : AbstractEntity
     {
         [SerializeField] private Vector2 _maxVelocity = new Vector2(22, 22);
-        [SerializeField] GameObject gameoverscreen;
+        
         private float _flashDuration = 0.2f;
         private int _flashRepeat = 5;
+        
         public float JumpVelocity = 100f;
         public static Player Current;
 
@@ -56,6 +57,11 @@ namespace Assets.Scripts.Entity
             
             _console.OnActivate += () => { _controlsDisabled = true; }; // Disable player controls when console gets activated
             _console.OnDeactivate += () => { _controlsDisabled = false; }; // Enable player controls when console gets closed
+        }
+
+        public void GameFinished()
+        {
+            gameObject.SetActive(false);
         }
 
         public void FixedUpdate()
@@ -145,7 +151,6 @@ namespace Assets.Scripts.Entity
         {
             transform.position = _spawnPoint;
             Health = _maxHealth;
-            gameoverscreen.SetActive(true);
             EventSystem.Current.PlayerDeath(this);
         }
         public IEnumerator FlashPlayer()
@@ -160,4 +165,3 @@ namespace Assets.Scripts.Entity
         }
     }
 }
-

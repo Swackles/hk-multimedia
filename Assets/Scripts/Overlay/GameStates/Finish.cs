@@ -4,7 +4,7 @@ using Assets.Scripts.Overlay.GameInfo;
 
 namespace Assets.Scripts.Overlay.GameStates
 {
-    public class GameOver : MonoBehaviour
+    public class Finish : MonoBehaviour
     {
         [SerializeField] private Text _pointsTextField;
 

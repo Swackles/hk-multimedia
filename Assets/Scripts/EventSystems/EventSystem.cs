@@ -15,11 +15,29 @@ namespace Assets.Scripts.EventSystems
         {
             Current = this;
 
+            SubscribeGameFinished();
             SubscribePlayerHurt();
             SubscribeVaccine();
             SubscribePointsCollected();
             SubscribeDeath();
+            LiftDoorEnter();
+            LiftAnimationEnding();
         }
+        #region GameFinished
+        private void SubscribeGameFinished()
+        {
+            foreach (IGameFinished subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IGameFinished>())
+            {
+                OnGameFinished += subscriber.OnGameFinished;
+            }
+        }
+
+        public event Action OnGameFinished;
+        public void GameFinished()
+        {
+            OnGameFinished?.Invoke();
+        }
+        #endregion
 
         #region PlayerHurt
         private void SubscribePlayerHurt()
@@ -95,6 +113,27 @@ namespace Assets.Scripts.EventSystems
         public void VaccineEffectEnd()
         {
             OnVaccineEffectEnd?.Invoke();
+        }
+        #endregion
+
+        #region Lift
+        public event Action onLiftDoorEnter;
+        public void LiftDoorEnter()
+        {
+            if (onLiftDoorEnter != null)
+            {
+                onLiftDoorEnter();
+            }
+        }
+
+        public event Action onLiftAnimationEnding;
+        public void LiftAnimationEnding()
+        {
+            onLiftAnimationEnding += onLiftAnimationEnding;
+            if (onLiftAnimationEnding != null)
+            {
+                onLiftAnimationEnding();
+            }
         }
         #endregion
     }
