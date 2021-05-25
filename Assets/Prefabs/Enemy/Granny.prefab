@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4583020923394076436}
   - component: {fileID: 4583020923394076439}
   - component: {fileID: 4583020923394076438}
-  - component: {fileID: 4583020923394076441}
   - component: {fileID: 4583020923394076434}
   - component: {fileID: 4583020923394076437}
+  - component: {fileID: 8715012058220128784}
   m_Layer: 0
   m_Name: Granny
   m_TagString: Enemy
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4583020923394076443}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.166, y: -1, z: 0}
-  m_LocalScale: {x: 0.38099363, y: 0.35949266, z: 0.7447485}
+  m_LocalScale: {x: 1, y: 1, z: 0.7447485}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -104,32 +104,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &4583020923394076441
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4583020923394076443}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.05258894, y: -0.11149621}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.8, y: 10.8}
-    newSize: {x: 10.8, y: 10.8}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 10.274125, y: 10.577007}
-  m_EdgeRadius: 0
 --- !u!50 &4583020923394076434
 Rigidbody2D:
   serializedVersion: 4
@@ -138,7 +112,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4583020923394076443}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -150,7 +124,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &4583020923394076437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,3 +141,19 @@ MonoBehaviour:
   HitPower: 100
   _patrolPoints: []
   _guardFor: 3000
+--- !u!70 &8715012058220128784
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583020923394076443}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.048428133, y: 0.4110629}
+  m_Size: {x: 10.703143, y: 11.343289}
+  m_Direction: 0
