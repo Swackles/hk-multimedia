@@ -19,6 +19,7 @@ namespace Assets.Scripts.Overlay.GameStates
 
         public void Show()
         {
+            gameObject.SetActive(true);
             _pointsTextField.text = "Final score: " + PointsOverlay.Current.Points;
         }
     }
