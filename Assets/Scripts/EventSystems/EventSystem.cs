@@ -15,6 +15,7 @@ namespace Assets.Scripts.EventSystems
         {
             Current = this;
 
+            SubscribeGameFinished();
             SubscribePlayerHurt();
             SubscribeVaccine();
             SubscribePointsCollected();
@@ -22,6 +23,21 @@ namespace Assets.Scripts.EventSystems
             LiftDoorEnter();
             LiftAnimationEnding();
         }
+        #region GameFinished
+        private void SubscribeGameFinished()
+        {
+            foreach (IGameFinished subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IGameFinished>())
+            {
+                OnGameFinished += subscriber.OnGameFinished;
+            }
+        }
+
+        public event Action OnGameFinished;
+        public void PlayerHurt()
+        {
+            OnGameFinished?.Invoke();
+        }
+        #endregion
 
         #region PlayerHurt
         private void SubscribePlayerHurt()
