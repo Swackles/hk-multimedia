@@ -23,12 +23,14 @@ namespace Assets.Scripts.Overlay.GameInfo
         {
             Current = this;
             _text = GetComponent<Text>();
+            PlayerPrefs.SetInt ("final_score", 0);
             UpdatePoints();
         }
 
         public void OnPointsCollected(int points)
         {
             _points += points;
+            PlayerPrefs.SetInt ("final_score", _points);
             UpdatePoints();
         }
 
