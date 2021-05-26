@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 10
-  HitPower: 100
+  HitPower: 4000
   _patrolPoints: []
   _guardFor: 3000
 --- !u!70 &8715012058220128784
