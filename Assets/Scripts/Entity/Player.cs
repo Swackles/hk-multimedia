@@ -77,16 +77,8 @@ namespace Assets.Scripts.Entity
             if (Input.GetKey(KeyCode.Space) && IsGrounded)
 
             {
-                Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
-                /**
-                 * ##### Why GetButton got replaced with GetKey #####
-                 * For some reason GetButton is unreliable and won't always register the key pressed
-                 */
-                if (Input.GetKey(KeyCode.Space) && RB.velocity.y == 0)
-                {
-                    RB.velocity = Vector2.up * JumpVelocity;
-                    _audio.Play(_audio.Jump);
-                }
+                RB.velocity = Vector2.up * JumpVelocity;
+                _audio.Play(_audio.Jump);
             }
 
             if (RB.velocity.x > _maxVelocity.x)
