@@ -15,7 +15,7 @@ namespace Assets.Scripts.Overlay.GameStates
 
         public void MainMenu() { SceneLoader.MainMenu(); }
 
-        public void Replay() { SceneLoader.ReloadScene(); }
+        public void Replay() { SceneLoader.LevelOne(); }
 
         public void Show()
         {
