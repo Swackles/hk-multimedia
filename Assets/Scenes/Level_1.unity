@@ -15799,6 +15799,91 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrolpoint
       objectReference: {fileID: 0}
+    - target: {fileID: 6377375497377161151, guid: 96a0299a92ae5c84d9d9e690687403b6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073862156854350183, guid: 96a0299a92ae5c84d9d9e690687403b6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 216bae02213ad0f47a9ee613af7e83bd, type: 3}
+--- !u!4 &608168309 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4583020923394076436, guid: a8ac2cffa44ec0945936527ccb57901b,
+    type: 3}
+  m_PrefabInstance: {fileID: 471812553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &661656131
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1893703340}
+    m_Modifications:
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -271.25897
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623878, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3367779589690623879, guid: 216bae02213ad0f47a9ee613af7e83bd,
+        type: 3}
+      propertyPath: m_Name
+      value: Patrolpoint (1)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 216bae02213ad0f47a9ee613af7e83bd, type: 3}
 --- !u!4 &608168309 stripped
@@ -16924,6 +17009,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mask
       objectReference: {fileID: 0}
+    - target: {fileID: 6124688233984581644, guid: 8ba81895329f0bb41a0511c2821bbf14,
+        type: 3}
+      propertyPath: gameoverscreen
+      value: 
+      objectReference: {fileID: 1729243079}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ba8bbd5c5aafeb42b981cc3a503f207, type: 3}
 --- !u!4 &1110121197 stripped
