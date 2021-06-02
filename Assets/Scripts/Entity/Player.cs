@@ -69,6 +69,10 @@ namespace Assets.Scripts.Entity
 
             if (!_controlsDisabled)
 
+            // Fixes issue with player collider colliding with the gaps in tiles
+            if (IsGrounded)
+                RB.velocity = Vector2.right * RB.velocity;
+
             Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
             /**
              * ##### Why GetButton got replaced with GetKey #####
@@ -93,7 +97,7 @@ namespace Assets.Scripts.Entity
                 RB.velocity = new Vector2(_maxVelocity.x, RB.velocity.y);
             else if (RB.velocity.x < _maxVelocity.x * -1)
                 RB.velocity = new Vector2(_maxVelocity.x * -1, RB.velocity.y);
-            
+
             #region Animator Logic
 
             Movement = Movement * Speed;
