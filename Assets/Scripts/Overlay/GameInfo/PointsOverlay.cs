@@ -21,7 +21,8 @@ namespace Assets.Scripts.Overlay.GameInfo
 
         public void Awake()
         {
-            _points = GameState.GlobalState.Instance.GameScore;
+            if (GameState.GlobalState.Instance)
+                _points = GameState.GlobalState.Instance.GameScore;
 
             Current = this;
             _text = GetComponent<Text>();
