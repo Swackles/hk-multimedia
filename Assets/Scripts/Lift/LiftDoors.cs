@@ -1,6 +1,5 @@
 using Assets.Scripts.EventSystems;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using System;
 using System.Text.RegularExpressions;
 
@@ -13,8 +12,8 @@ namespace Assets.Scripts
             Regex reg = new Regex(@"Level_(\d+)");
             Match match = reg.Match(SceneLoader.CurrentSceneName);
             string nextSceneName = "Level_" + (Int32.Parse(match.Groups[1].Value) + 1);
-
-            if (SceneManager.GetSceneByName(nextSceneName).IsValid())
+            
+            if (Application.CanStreamedLevelBeLoaded(nextSceneName))
                 SceneLoader.NextLevel();
             else
                 EventSystem.Current.GameFinished();

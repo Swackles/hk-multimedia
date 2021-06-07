@@ -1,4 +1,5 @@
 ﻿using UnityEngine.SceneManagement;
+using UnityEngine;
 using System;
 using System.Text.RegularExpressions;
 using QFSW.QC;
@@ -42,7 +43,7 @@ namespace Assets.Scripts
             Match match = reg.Match(CurrentSceneName);
             string nextSceneName = "Level_" + (Int32.Parse(match.Groups[1].Value) + 1);
 
-            if (match.Success && SceneManager.GetSceneByName(nextSceneName).IsValid())
+            if (match.Success && Application.CanStreamedLevelBeLoaded(nextSceneName))
             {
                 GameState.GlobalState.Instance.GameScore = Overlay.GameInfo.PointsOverlay.Current.Points;
 
