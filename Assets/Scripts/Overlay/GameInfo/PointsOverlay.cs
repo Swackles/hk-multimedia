@@ -8,7 +8,7 @@ namespace Assets.Scripts.Overlay.GameInfo
     [RequireComponent(typeof(Text))]
     class PointsOverlay : MonoBehaviour, IPointsCollected
     {
-        public int _points = 0;
+        private int _points = 0;
         [Tooltip("The string that goes before the points")]
         [SerializeField] private string _prefix = "";
         [Tooltip("The string that goes after the points")]
@@ -21,6 +21,9 @@ namespace Assets.Scripts.Overlay.GameInfo
 
         public void Awake()
         {
+            if (GameState.GlobalState.Instance)
+                _points = GameState.GlobalState.Instance.GameScore;
+
             Current = this;
             _text = GetComponent<Text>();
             PlayerPrefs.SetInt ("final_score", 0);

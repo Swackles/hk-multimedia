@@ -7,6 +7,11 @@ namespace Assets.Scripts.Menu
     {
         private bool _mute;
 
+        private void Start()
+        {
+            AudioListener.pause = false;
+        }
+
         public void StartGame()
         {
             SceneLoader.LevelOne();
