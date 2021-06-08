@@ -13,9 +13,17 @@ namespace Assets.Scripts.Overlay.GameStates
             gameObject.SetActive(false);
         }
 
-        public void MainMenu() { SceneLoader.MainMenu(); }
+        public void MainMenu() 
+        {
+            PlayerPrefs.SetInt ("final_score", 0);
+            SceneLoader.MainMenu(); 
+        }
 
-        public void Replay() { SceneLoader.LevelOne(); }
+        public void Replay() 
+        { 
+            PlayerPrefs.SetInt ("final_score", 0);
+            SceneLoader.LevelOne(); 
+        }
 
         public void Show()
         {
