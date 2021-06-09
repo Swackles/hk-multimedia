@@ -15,13 +15,13 @@ namespace Assets.Scripts.Overlay.GameStates
 
         public void MainMenu() 
         {
-            PlayerPrefs.SetInt ("final_score", 0);
+            GameState.GlobalState.Instance.GameScore = 0;
             SceneLoader.MainMenu(); 
         }
 
         public void Replay() 
         { 
-            PlayerPrefs.SetInt ("final_score", 0);
+            GameState.GlobalState.Instance.GameScore = 0;
             SceneLoader.LevelOne(); 
         }
 
