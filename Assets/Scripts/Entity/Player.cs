@@ -61,6 +61,9 @@ namespace Assets.Scripts.Entity
 
         public void GameFinished()
         {
+            RB.velocity = Vector3.zero;
+            Movement = Vector3.zero;
+
             _controlsDisabled = true;
         }
 
@@ -68,35 +71,29 @@ namespace Assets.Scripts.Entity
         {
 
             if (!_controlsDisabled)
-
-            // Fixes issue with player collider colliding with the gaps in tiles
-            if (IsGrounded)
-                RB.velocity = Vector2.right * RB.velocity;
-
-            Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
-            /**
-             * ##### Why GetButton got replaced with GetKey #####
-             * For some reason GetButton is unreliable and won't always register the key pressed
-             */
-            if (Input.GetKey(KeyCode.Space) && IsGrounded)
-
             {
+                // Fixes issue with player collider colliding with the gaps in tiles
+                if (IsGrounded)
+                    RB.velocity = Vector2.right * RB.velocity;
+
                 Movement = new Vector2(Input.GetAxisRaw("Horizontal"), 0);
                 /**
                  * ##### Why GetButton got replaced with GetKey #####
                  * For some reason GetButton is unreliable and won't always register the key pressed
                  */
-                if (Input.GetKey(KeyCode.Space) && RB.velocity.y == 0)
+                if (Input.GetKey(KeyCode.Space) && IsGrounded)
+
                 {
                     RB.velocity = Vector2.up * JumpVelocity;
                     _audio.Play(_audio.Jump);
                 }
+
+                if (RB.velocity.x > _maxVelocity.x)
+                    RB.velocity = new Vector2(_maxVelocity.x, RB.velocity.y);
+                else if (RB.velocity.x < _maxVelocity.x * -1)
+                    RB.velocity = new Vector2(_maxVelocity.x * -1, RB.velocity.y);
             }
 
-            if (RB.velocity.x > _maxVelocity.x)
-                RB.velocity = new Vector2(_maxVelocity.x, RB.velocity.y);
-            else if (RB.velocity.x < _maxVelocity.x * -1)
-                RB.velocity = new Vector2(_maxVelocity.x * -1, RB.velocity.y);
 
             #region Animator Logic
 
