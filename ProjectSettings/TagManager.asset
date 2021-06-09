@@ -49,12 +49,12 @@ TagManager:
   - name: Background
     uniqueID: 3487660223
     locked: 0
-  - name: Forground
-    uniqueID: 2788644723
-    locked: 0
   - name: Player
     uniqueID: 544777651
     locked: 0
   - name: Pickups
     uniqueID: 549795201
+    locked: 0
+  - name: Forground
+    uniqueID: 2788644723
     locked: 0

@@ -845,8 +845,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1506322573
-  m_SortingLayer: 2
+  m_SortingLayerID: -807307073
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
@@ -16894,7 +16894,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1506322573
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0.5, y: 0.5, z: 0}
@@ -17564,7 +17564,7 @@ PrefabInstance:
     - target: {fileID: 8347555588290186952, guid: 605b83ac8bffdf649b71a90868de3843,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8347555588314834069, guid: 605b83ac8bffdf649b71a90868de3843,
         type: 3}
@@ -17574,7 +17574,7 @@ PrefabInstance:
     - target: {fileID: 8347555588314834071, guid: 605b83ac8bffdf649b71a90868de3843,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8347555589727028142, guid: 605b83ac8bffdf649b71a90868de3843,
         type: 3}
@@ -18200,6 +18200,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 795305545}
     m_Modifications:
+    - target: {fileID: 6124688233984581644, guid: 8ba81895329f0bb41a0511c2821bbf14,
+        type: 3}
+      propertyPath: gameoverscreen
+      value: 
+      objectReference: {fileID: 1729243079}
     - target: {fileID: 4577103669261353216, guid: 6ba8bbd5c5aafeb42b981cc3a503f207,
         type: 3}
       propertyPath: m_RootOrder
@@ -18260,11 +18265,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Mask
       objectReference: {fileID: 0}
-    - target: {fileID: 6124688233984581644, guid: 8ba81895329f0bb41a0511c2821bbf14,
-        type: 3}
-      propertyPath: gameoverscreen
-      value: 
-      objectReference: {fileID: 1729243079}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ba8bbd5c5aafeb42b981cc3a503f207, type: 3}
 --- !u!4 &1110121197 stripped
