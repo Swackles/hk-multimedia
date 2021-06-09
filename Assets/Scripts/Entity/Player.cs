@@ -61,7 +61,7 @@ namespace Assets.Scripts.Entity
 
         public void GameFinished()
         {
-            gameObject.SetActive(false);
+            _controlsDisabled = true;
         }
 
         public void FixedUpdate()
