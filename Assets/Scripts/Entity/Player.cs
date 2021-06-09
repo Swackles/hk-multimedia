@@ -67,11 +67,15 @@ namespace Assets.Scripts.Entity
             _controlsDisabled = true;
         }
 
+        public void Update()
+        {
+            if (!_controlsDisabled && Input.GetKeyDown(KeyCode.Escape)) Game.PauseGame();
+        }
+
         public void FixedUpdate()
         {
-
             if (!_controlsDisabled)
-            {
+            {                
                 // Fixes issue with player collider colliding with the gaps in tiles
                 if (IsGrounded)
                     RB.velocity = Vector2.right * RB.velocity;

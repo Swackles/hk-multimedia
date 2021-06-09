@@ -22,6 +22,7 @@ namespace Assets.Scripts.EventSystems
             SubscribeDeath();
             LiftDoorEnter();
             LiftAnimationEnding();
+            SubscribeGame();
         }
         #region GameFinished
         private void SubscribeGameFinished()
@@ -135,6 +136,27 @@ namespace Assets.Scripts.EventSystems
                 onLiftAnimationEnding();
             }
         }
+        #endregion
+
+        #region Game
+        private void SubscribeGame()
+        {
+            foreach (IGameResumed subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IGameResumed>())
+            {
+                OnGameResumed += subscriber.OnGameResumed;
+            }
+
+            foreach (IGamePaused subscriber in FindObjectsOfType<MonoBehaviour>().OfType<IGamePaused>())
+            {
+                OnGamePaused += subscriber.OnGamePaused;
+            }
+        }
+
+        public event Action OnGamePaused;
+        public void GamePaused() { OnGamePaused?.Invoke(); }
+
+        public event Action OnGameResumed;
+        public void GameResumed() { OnGameResumed?.Invoke(); }
         #endregion
     }
 }
