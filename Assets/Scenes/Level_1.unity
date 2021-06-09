@@ -15978,7 +15978,7 @@ PrefabInstance:
     - target: {fileID: 76546685255042631, guid: 96a0299a92ae5c84d9d9e690687403b6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 149664578753665950, guid: 96a0299a92ae5c84d9d9e690687403b6,
         type: 3}
@@ -16474,7 +16474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0.1
 --- !u!1001 &595916891
 PrefabInstance:
@@ -16817,7 +16817,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 1
 --- !u!4 &697023282 stripped
 Transform:
@@ -18110,7 +18110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0.2
 --- !u!1 &1075122410
 GameObject:
@@ -19122,7 +19122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0
 --- !u!114 &1461740916 stripped
 MonoBehaviour:
@@ -19313,7 +19313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0.2
 --- !u!1 &1575606368
 GameObject:
@@ -19411,7 +19411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0.4
 --- !u!1001 &1670648776
 PrefabInstance:
@@ -19528,7 +19528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0
 --- !u!212 &1672753648
 SpriteRenderer:
@@ -19707,7 +19707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0
 --- !u!212 &1691793106
 SpriteRenderer:
@@ -19924,7 +19924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0.2
 --- !u!1 &1747650939
 GameObject:
@@ -20022,7 +20022,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0.2
 --- !u!1001 &1755472644
 PrefabInstance:
@@ -20340,7 +20340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 0
 --- !u!1 &1828119954
 GameObject:
@@ -20816,7 +20816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0dc9c17a70af764aa1bb64ded2b73b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 0}
+  _mainCamera: {fileID: 1168442004}
   _parallaxEffect: 1
 --- !u!4 &1969741511 stripped
 Transform:
